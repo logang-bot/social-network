@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_7_social_network_01_7_social_network_01UITests : NSObject
+@end
+@implementation PodsDummy_Pods_7_social_network_01_7_social_network_01UITests
+@end
