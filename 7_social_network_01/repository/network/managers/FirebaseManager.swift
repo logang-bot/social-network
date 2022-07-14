@@ -99,6 +99,7 @@ class FirebaseManager {
         userRef.updateData(values) { (error) in
             if error == nil {
                 print("updated")
+                completion(.success(""))
             } else{
                 print("not updated")
             }

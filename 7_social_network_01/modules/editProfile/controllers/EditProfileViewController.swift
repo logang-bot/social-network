@@ -12,60 +12,85 @@ import Firebase
 class EditProfileViewController: ImagePickerViewController {
     
     var user: AuthData?
-    let firebaseManager = FirebaseManager.shared
     var isEdditingPhoto = false
+    var viewmodel = EditProfileViewModel()
     
     @IBOutlet weak var userPhotoImageVIew: UIImageView!
-    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-    
     @IBOutlet weak var resetButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setFields()
+        initViewModel()
+        setUpSettings()
         userPhotoImageVIew.layer.cornerRadius = userPhotoImageVIew.frame.width / 2
         resetButton.isHidden = true
     }
     
+    func setUpSettings() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.showPhotoOptions))
+        userPhotoImageVIew.gestureRecognizers = [tapGesture]
+        userPhotoImageVIew.isUserInteractionEnabled = true
+    }
+    
+    @objc func showPhotoOptions() {
+        
+        let alert = UIAlertController(title: "Options", message: nil, preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "View Photo", style: .default) {_ in
+           
+        })
+        
+        alert.addAction(UIAlertAction(title: "Remove Photo", style: .default){_ in
+            
+        })
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        navigationController?.present(alert, animated: true)
+    }
+    
+    func initViewModel() {
+        viewmodel.user = user
+        viewmodel.finishEditing = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+        
     @IBAction func updatePhoto(_ sender: Any) {
         showAddImageOptionAlert()
     }
     
     @IBAction func updateInfo(_ sender: Any) {
-//        firebaseManager.getOneDocument(type: User.self, forCollection: .users, id: (user?.idUser)!) { result in
-//            switch result {
-//            case .success(let data):
-//                print(data)
-//            case .failure(let error):
-//                print("error, \(error.localizedDescription)")
-//            }
-//        }
         guard passwordTextField.text == confirmPasswordTextField.text else {
             ErrorAlert.shared.showAlert(title: "Security Alert", message: "Please, confirm your password, (with the new one if you're changing it)", target: self)
             return
         }
         
-        let newData = [
-            "name": nameTextField.text!,
-            "email": emailTextField.text!,
-            "password": passwordTextField.text!,
-            "photo": "defaultUserPhoto"
-        ]
-        
-        if isEdditingPhoto {
-            updateFullData(values: newData)
+        ConfirmAlert(title: "Confirm changes", message: "Are you sure you wanna save this changes?", preferredStyle: .alert).showAlert(target: self) { () in
+            
+            let newData = [
+                "name": self.nameTextField.text!,
+                "email": self.emailTextField.text!,
+                "password": self.passwordTextField.text!,
+                "photo": "defaultUserPhoto"
+            ]
+            
+            if self.isEdditingPhoto {
+                self.viewmodel.updateFullData(values: newData, photo: self.userPhotoImageVIew.image!)
+            }
+            else { self.viewmodel.updateInfo(values: newData) }
         }
-        else { updateInfo(values: newData) }
     }
     
     @IBAction func deleteAccount(_ sender: Any) {
-        guard let idUser = user?.idUser else {return}
-        firebaseManager.removeDocument(documentID: idUser, collection: .users) {result in
-            ProfileViewController().logout()
+        ConfirmAlert(title: "Delete account confirmation", message: "Are you sure you wanna delete your accoutn permanently?", preferredStyle: .alert).showAlert(target: self) { () in
+            self.viewmodel.deleteUser()
         }
     }
     
@@ -93,45 +118,6 @@ class EditProfileViewController: ImagePickerViewController {
                     print("Can't display the image \(error)")
                 }
             }
-        }
-    }
-    
-    func updateInfo(values: [String: String]) {
-        firebaseManager.updateFieldsInDocument(documentId: (user?.idUser)!, values: values, collection: .users) { result in
-            print("updating")
-        }
-    }
-    
-    func updateFullData(values: [String: String]) {
-        
-        var finalValues = values
-        let randomID = UUID.init().uuidString
-        let uploadRef = Storage.storage().reference(withPath: "photos/\(randomID).jpg")
-
-        guard let imageData = userPhotoImageVIew.image?.jpegData(compressionQuality: 0.75) else {return}
-
-        let uploadMetadata = StorageMetadata.init()
-
-        uploadMetadata.contentType = "image/jpeg"
-
-        uploadRef.putData(imageData, metadata: uploadMetadata) { (downloadedMetada, error) in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-                return
-            }
-            print("Completed")
-            
-            uploadRef.downloadURL(completion: {(url, error) in
-                if let error = error {
-                    print("Error generating url \(error.localizedDescription)")
-                    return
-                }
-                if let url = url {
-                    print("URL: \(url.absoluteString)")
-                    finalValues["photo"] = url.absoluteString
-                    self.updateInfo(values: finalValues)
-                }
-            })
         }
     }
     

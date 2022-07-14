@@ -26,7 +26,6 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         title = "Profile"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
-//        loadData()
         photoImageVIew.layer.cornerRadius = 50
     }
     
@@ -59,11 +58,10 @@ class ProfileViewController: UIViewController {
             }
         }
     }
-    
+
     @objc func logout() {
         if (CoreDataManager.shared.getData().count != 0) {
-            let authItem = CoreDataManager.shared.getData().first as! AuthData
-            CoreDataManager.shared.deleteElement(element: authItem)
+            CoreDataManager.shared.deleteAll()
             SceneDelegate.shared?.setupRootControllerIfNeeded(validUser: false)
         }
     }
