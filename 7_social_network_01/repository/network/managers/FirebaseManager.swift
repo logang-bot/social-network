@@ -91,8 +91,7 @@ class FirebaseManager {
         
     }
     
-    func updateFieldsInDocument(documentId: String, values: [String: String?], collection: FirebaseCollections, completion: @escaping ( Result<Any, Error>) -> Void  ) {
-//        guard let itemDict = document.dict else { return completion(.failure(FirebaseErrors.ErrorToDecodeItem)) }
+    func updateFieldsInDocument(documentId: String, values: [String: Any], collection: FirebaseCollections, completion: @escaping ( Result<Any, Error>) -> Void  ) {
         
         let userRef = db.collection(collection.rawValue).document(documentId)
             
@@ -103,8 +102,11 @@ class FirebaseManager {
             } else{
                 print("not updated")
             }
-            
         }
+        
+//        userRef.updateData([
+//            "followers": FieldValue.arrayUnion(<#T##elements: [Any]##[Any]#>)
+//        ])
     }
     
     func updateDocument<T: Encodable & BaseModel>(document: T, collection: FirebaseCollections, completion: @escaping ( Result<T, Error>) -> Void  ) {
