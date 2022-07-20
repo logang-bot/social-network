@@ -60,7 +60,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             createNavController(for: AuthorListViewController(), title: "Authors", image: UIImage(systemName: "person.3.sequence.fill")!),
             
-            createNavController(for: ChatListViewController(), title: "Chats", image: UIImage(systemName: "message.fill")!),
+            createNavController(for: FriendsViewController(), title: "Friends", image: UIImage(systemName: "message.fill")!),
             
             createNavController(for: ProfileViewController(), title: "Profile", image: UIImage(systemName: "person.fill")!)
         ]

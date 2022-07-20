@@ -13,7 +13,7 @@ class SignUpViewModel {
     
     func addUser(name: String, email: String, password: String, completion: @escaping (Result<User, Error>) -> Void ) {
         let userID = firebaseManager.getDocID(forCollection: .users)
-        let user = User(id: userID, name: name, email: email, password: password, photo: "defaultUserPhoto", followers: [], following: [], friends: [], createdAt: Date(), updatedAt: Date())
+        let user = User(id: userID, name: name, email: email, password: password, photo: "defaultUserPhoto", followers: [], following: [], friends: [], mangas: [], chats: [], createdAt: Date(), updatedAt: Date())
         
         firebaseManager.addDocument(document: user, collection: .users) { result in
             completion(result)

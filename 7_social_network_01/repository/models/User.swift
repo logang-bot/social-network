@@ -16,6 +16,8 @@ struct User: Codable, BaseModel {
     let followers: [String]
     let following: [String]
     let friends: [String]
+    var mangas: [String]
+    var chats: [String]
     let createdAt: Date
     let updatedAt: Date
 }

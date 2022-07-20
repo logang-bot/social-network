@@ -42,7 +42,8 @@ class AuthorDetailViewController: UIViewController {
         usernameLabel.text = viewmodel?.authorData?.name
         followersCantLabel.text = String(viewmodel?.authorData?.followers.count ?? 0)
         followingCantLabel.text = String(viewmodel?.authorData?.following.count ?? 0)
-        followButton.setTitle(viewmodel?.followStatus, for: .normal)
+        followButton.setTitle(viewmodel?.followOption, for: .normal)
+        sendFriendReqButton.setTitle(viewmodel?.friendshipOption, for: .normal)
         self.title = viewmodel?.authorData?.name 
         
         if viewmodel?.authorData?.photo != "defaultUserPhoto" {
@@ -57,10 +58,25 @@ class AuthorDetailViewController: UIViewController {
         }
     }
     
-    @IBAction func follow(_ sender: Any) {
+    @IBAction func follow(_ sender: UIButton) {
         viewmodel?.toggleFollowStatus()
+        guard let buttonTitle = sender.title(for: .normal) else {return}
+        
+        if buttonTitle == "Follow" {
+            followButton.setTitle("Unfollow", for: .normal)
+        } else {
+            followButton.setTitle("Follow", for: .normal)
+        }
     }
     
-    @IBAction func sendFriendReq(_ sender: Any) {
+    @IBAction func sendFriendReq(_ sender: UIButton) {
+        viewmodel?.changeFriendshipStatus()
+        guard let buttonTitle = sender.title(for: .normal) else {return}
+        
+        if buttonTitle == "Add friend" {
+            sendFriendReqButton.setTitle("Unsend friend request", for: .normal)
+        } else {
+            followButton.setTitle("Add friend", for: .normal)
+        }
     }
 }

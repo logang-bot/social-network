@@ -11,12 +11,16 @@ import FirebaseFirestore
 class AuthorDetailViewModel {
     var authorId: String?
     var setData: (()->Void)?
-    var followStatus: String?
+    var followOption: String?
+    var friendshipOption: String?
+    
+    var friendshipStatus: FriendRequest?
     let currentUser = CoreDataManager.shared.getData().first as! AuthData
     
     var authorData: User? {
         didSet {
-            self.checkFollowStatus()
+            checkFollowStatus()
+            checkFriendShipStatus()
             setData?()
         }
     }
@@ -35,15 +39,46 @@ class AuthorDetailViewModel {
                 print("Can't fetch the author data")
             }
         }
+        
+        firebaseManager.getDocuments(type: FriendRequest.self, forCollection: .friendRequests) { result in
+            switch result {
+            case .success(let friendsRequests):
+                self.friendshipStatus = (friendsRequests.filter { request in
+                    request.idReceiver == self.authorId && request.idSender == self.currentUser.idUser
+                }).first
+            case .failure:
+                print("Something went wrong, can't get all documents")
+            }
+        }
     }
     
+    private func updateLocalUser(values: [String: Any]) {
+        firebaseManager.getOneDocument(type: User.self, forCollection: .users, id: (currentUser.idUser)!) { [weak self] result in
+            switch result {
+            case .success(let data):
+                self!.firebaseManager.updateFieldsInDocument(documentId: (self!.currentUser.idUser)!, values: values, collection: .users) { result in
+                }
+                
+                CoreDataManager.shared.deleteAll()
+                CoreDataManager.shared.saveLocalUser(user: data)
+                
+            case .failure(let error):
+                print("error, \(error.localizedDescription)")
+            }
+        }
+    }
+}
+
+// Methos for following features
+extension AuthorDetailViewModel {
     func checkFollowStatus() {
         if (authorData?.followers.contains(currentUser.idUser!))! {
-            followStatus = "Unfollow"
+            followOption = "Unfollow"
             return
         }
-        followStatus = "Follow"
+        followOption = "Follow"
     }
+    
     
     func toggleFollowStatus() {
         var followersValues = [String: Any]()
@@ -54,14 +89,14 @@ class AuthorDetailViewModel {
                 "followers": FieldValue.arrayRemove([currentUser.idUser!])
             ]
             followingValues = [
-                "followers": FieldValue.arrayRemove([self.authorId!])
+                "following": FieldValue.arrayRemove([self.authorId!])
             ]
         } else {
             followersValues = [
                 "followers": FieldValue.arrayUnion([currentUser.idUser!])
             ]
             followingValues = [
-                "followers": FieldValue.arrayUnion([self.authorId!])
+                "following": FieldValue.arrayUnion([self.authorId!])
             ]
         }
         
@@ -70,21 +105,35 @@ class AuthorDetailViewModel {
         }
     }
     
-    private func updateLocalUser(values: [String: Any]) {
-        firebaseManager.getOneDocument(type: User.self, forCollection: .users, id: (currentUser.idUser)!) { [weak self] result in
-            switch result {
-            case .success(let data):
-                print(data)
-                self!.firebaseManager.updateFieldsInDocument(documentId: (self!.currentUser.idUser)!, values: values, collection: .users) { result in
-                }
-                
-                CoreDataManager.shared.deleteAll()
-                CoreDataManager.shared.saveLocalUser(user: data)
-                self?.setData?()
-                
-            case .failure(let error):
-                print("error, \(error.localizedDescription)")
+}
+
+// Method for friendship features
+extension AuthorDetailViewModel {
+    func checkFriendShipStatus() {
+        if friendshipStatus?.status == "accepted" {
+            friendshipOption = "Unfriend"
+            return
+        }
+        if friendshipStatus?.status == "requested" {
+            friendshipOption = "Unsend friend request"
+            return
+        }
+        friendshipOption = "Add friend"
+    }
+    
+    func changeFriendshipStatus() {
+        if friendshipStatus == nil {
+            let frID = firebaseManager.getDocID(forCollection: .friendRequests)
+            let newfr = FriendRequest(id: frID, idSender: currentUser.idUser!, idReceiver: authorId!, status: "requested", createdAt: Date(), updatedAt: Date())
+            
+            firebaseManager.addDocument(document: newfr, collection: .friendRequests) { result in
+                self.friendshipOption = "Unsend friend request"
             }
+            return
+        }
+        
+        firebaseManager.removeDocument(documentID: friendshipStatus!.id, collection: .friendRequests) {_ in
+            self.friendshipOption = "Add friend"
         }
     }
 }

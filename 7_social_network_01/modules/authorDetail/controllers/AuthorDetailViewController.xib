@@ -96,7 +96,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPh-9g-1Si">
                             <rect key="frame" x="169.5" y="0.0" width="164.5" height="31"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="tinted" title="Send Friend Request"/>
+                            <buttonConfiguration key="configuration" style="tinted" title="Add Friend"/>
                             <connections>
                                 <action selector="sendFriendReq:" destination="-1" eventType="touchUpInside" id="oR9-Y8-Oai"/>
                             </connections>

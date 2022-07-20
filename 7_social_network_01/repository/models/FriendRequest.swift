@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct FrienRequest: Codable, BaseModel {
+struct FriendRequest: Codable, BaseModel {
     var id: String
     let idSender: String
     let idReceiver: String
-    let status: String
+    var status: String
     let createdAt: Date
-    let updatedAt: Date
+    var updatedAt: Date
 }

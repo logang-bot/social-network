@@ -9,7 +9,8 @@ import Foundation
 
 struct Chat: Codable, BaseModel {
     var id: String
-    var idParciticpants: [String]
+    var idParcitipants: [String]
     let createdAt: Date
     let updatedAt: Date
+    var messages: [String]
 }

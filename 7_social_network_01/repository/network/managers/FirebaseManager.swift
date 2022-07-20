@@ -15,6 +15,9 @@ enum FirebaseErrors: Error {
 
 enum FirebaseCollections: String {
     case users
+    case friendRequests
+    case messages
+    case chats
 }
 
 class FirebaseManager {
@@ -35,7 +38,6 @@ class FirebaseManager {
                     let jsonDecoder = JSONDecoder()
                     let dataRaw = try? JSONSerialization.data(withJSONObject: data)
                     let item = try? jsonDecoder.decode(type, from: dataRaw!)
-//                    print(data)
                     completion(.success(item!))
                 }
             }
@@ -103,10 +105,6 @@ class FirebaseManager {
                 print("not updated")
             }
         }
-        
-//        userRef.updateData([
-//            "followers": FieldValue.arrayUnion(<#T##elements: [Any]##[Any]#>)
-//        ])
     }
     
     func updateDocument<T: Encodable & BaseModel>(document: T, collection: FirebaseCollections, completion: @escaping ( Result<T, Error>) -> Void  ) {
