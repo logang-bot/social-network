@@ -24,6 +24,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         print(loginState)
         setupRootControllerIfNeeded(validUser: state)
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window = self.window
         guard let _ = (scene as? UIWindowScene) else { return }
     }
     

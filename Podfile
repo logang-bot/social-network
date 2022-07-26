@@ -6,6 +6,7 @@ target '7_social_network_01' do
   use_frameworks!
 
   # Pods for 7_social_network_01
+  pod 'SVProgressHUD'
 
   target '7_social_network_01Tests' do
     inherit! :search_paths

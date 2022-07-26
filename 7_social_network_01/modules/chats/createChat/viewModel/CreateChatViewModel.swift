@@ -51,16 +51,6 @@ class CreateChatViewModel {
     }
     
     func createNewChat(with idUser: String, completion: @escaping (_ id: String) -> Void) {
-//        let testTime = Date().timeIntervalSinceReferenceDate
-//        print(testTime)
-        
-//        let testDate = NSDate(timeIntervalSinceReferenceDate: 679973367.700129)
-//        print("the data: \(testDate)")
-//
-//        let modifiedDate = Calendar.current.date(byAdding: .hour, value: -4, to: testDate as Date)!
-//        print(modifiedDate)
-        
-        
         let chatID = firebaseManager.getDocID(forCollection: .chats)
         let newChat = Chat(id: chatID, idParcitipants: [idUser, currentUser.idUser!], createdAt: Date(), updatedAt: Date(), messages: [])
         firebaseManager.addDocument(document: newChat, collection: .chats) { [self] result in

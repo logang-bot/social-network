@@ -14,6 +14,7 @@ class MessageTableViewCell: UITableViewCell {
     
     @IBOutlet weak var dateMessageLabel: UILabel!
     
+    var idSender: String?
     
     let firebaseManager = FirebaseManager.shared
     let currentUser = CoreDataManager.shared.getData().first as! AuthData
@@ -22,6 +23,9 @@ class MessageTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.layer.cornerRadius = 15
+        if idSender != nil {
+            setupMessageStyle(idSender: idSender!)
+        }
 //        self.layer.borderColor = .init(red: 255, green: 255, blue: 255, alpha: 0)
 //        self.layer.borderWidth = 5
     }
@@ -33,6 +37,7 @@ class MessageTableViewCell: UITableViewCell {
     }
     
     func setupMessageStyle(idSender: String) {
+        self.idSender = idSender
         if idSender == currentUser.idUser {
             self.backgroundColor = .lightGray
             messageContentLabel.textColor = .white
@@ -40,7 +45,9 @@ class MessageTableViewCell: UITableViewCell {
             
             contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 0))
         } else {
-//            contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 30))
+            self.backgroundColor = .white
+            messageContentLabel.textColor = .black
+            dateMessageLabel.textColor = .black
         }
     }
 }

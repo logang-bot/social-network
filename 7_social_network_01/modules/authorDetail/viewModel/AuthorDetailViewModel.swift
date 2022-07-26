@@ -58,7 +58,7 @@ class AuthorDetailViewModel {
             case .success(let data):
                 self!.firebaseManager.updateFieldsInDocument(documentId: (self!.currentUser.idUser)!, values: values, collection: .users) { result in
                 }
-                
+                self?.getAuthor()
                 CoreDataManager.shared.deleteAll()
                 CoreDataManager.shared.saveLocalUser(user: data)
                 
@@ -128,12 +128,14 @@ extension AuthorDetailViewModel {
             
             firebaseManager.addDocument(document: newfr, collection: .friendRequests) { result in
                 self.friendshipOption = "Unsend friend request"
+                self.getAuthor()
             }
             return
         }
         
         firebaseManager.removeDocument(documentID: friendshipStatus!.id, collection: .friendRequests) {_ in
             self.friendshipOption = "Add friend"
+            self.getAuthor()
         }
     }
 }

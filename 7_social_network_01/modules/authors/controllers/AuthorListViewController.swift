@@ -6,9 +6,9 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class AuthorListViewController: UIViewController {
-    
     
     @IBOutlet weak var authorsSearchBar: UISearchBar!
     
@@ -29,8 +29,10 @@ class AuthorListViewController: UIViewController {
     
     func initViewModel() {
         viewmodel.getAuthors()
+        SVProgressHUD.show()
         viewmodel.reloadData = { [weak self] in
             self?.authorsCollectionView.reloadData()
+            SVProgressHUD.dismiss()
         }
     }
 }

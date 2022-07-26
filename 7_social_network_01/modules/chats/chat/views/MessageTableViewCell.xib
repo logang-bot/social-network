@@ -24,7 +24,7 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1J-Vk-k2F">
                         <rect key="frame" x="15" y="25.5" width="290" height="13.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="11"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>

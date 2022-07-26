@@ -13,6 +13,16 @@
 		C2032ABF2884AE0500C20FFF /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2032ABE2884AE0500C20FFF /* FloatingButton.swift */; };
 		C2032AC22884AFC100C20FFF /* CreateChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2032AC02884AFC100C20FFF /* CreateChatViewController.swift */; };
 		C2032AC32884AFC100C20FFF /* CreateChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2032AC12884AFC100C20FFF /* CreateChatViewController.xib */; };
+		C204A7F3288A0503004535CA /* CreateMangaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204A7F1288A0503004535CA /* CreateMangaViewController.swift */; };
+		C204A7F4288A0503004535CA /* CreateMangaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C204A7F2288A0503004535CA /* CreateMangaViewController.xib */; };
+		C204A7F6288A0524004535CA /* CreateMangaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204A7F5288A0524004535CA /* CreateMangaViewModel.swift */; };
+		C204A7F9288A090E004535CA /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204A7F8288A090D004535CA /* CheckBox.swift */; };
+		C204A7FC288A0A38004535CA /* RadioGroup in Frameworks */ = {isa = PBXBuildFile; productRef = C204A7FB288A0A38004535CA /* RadioGroup */; };
+		C204A7FF288A2320004535CA /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204A7FD288A2320004535CA /* OptionTableViewCell.swift */; };
+		C204A800288A2320004535CA /* OptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C204A7FE288A2320004535CA /* OptionTableViewCell.xib */; };
+		C204A802288A33A0004535CA /* Manga.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204A801288A33A0004535CA /* Manga.swift */; };
+		C204A804288A3471004535CA /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204A803288A3471004535CA /* Comment.swift */; };
+		C204A806288A347D004535CA /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204A805288A347D004535CA /* Category.swift */; };
 		C20A7FB828769924004B4396 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20A7FB728769924004B4396 /* ProfileViewModel.swift */; };
 		C20A7FC12876A429004B4396 /* MangaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20A7FBF2876A429004B4396 /* MangaListViewController.swift */; };
 		C20A7FC22876A429004B4396 /* MangaListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C20A7FC02876A429004B4396 /* MangaListViewController.xib */; };
@@ -27,6 +37,13 @@
 		C2161238287EC78500C8EEA1 /* AuthorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2161236287EC78500C8EEA1 /* AuthorCollectionViewCell.swift */; };
 		C2161239287EC78500C8EEA1 /* AuthorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2161237287EC78500C8EEA1 /* AuthorCollectionViewCell.xib */; };
 		C216123B287EC8AF00C8EEA1 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216123A287EC8AF00C8EEA1 /* FirebaseStorageManager.swift */; };
+		C21A3844288F82F3003815ED /* MangaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21A3842288F82F3003815ED /* MangaTableViewCell.swift */; };
+		C21A3845288F82F3003815ED /* MangaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21A3843288F82F3003815ED /* MangaTableViewCell.xib */; };
+		C21A3848288F835C003815ED /* MangaListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21A3847288F835C003815ED /* MangaListViewModel.swift */; };
+		C21A384D288F8D60003815ED /* MangaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21A384B288F8D60003815ED /* MangaDetailViewController.swift */; };
+		C21A384E288F8D60003815ED /* MangaDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21A384C288F8D60003815ED /* MangaDetailViewController.xib */; };
+		C21A3851288F8DA0003815ED /* MangaDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21A3850288F8DA0003815ED /* MangaDetailViewModel.swift */; };
+		C21A3853288F9AAA003815ED /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21A3852288F9AAA003815ED /* Rating.swift */; };
 		C224515428837BDB000AA3D7 /* FriendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224515328837BDB000AA3D7 /* FriendRequest.swift */; };
 		C224515628837BE8000AA3D7 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224515528837BE8000AA3D7 /* Chat.swift */; };
 		C224515828837BF3000AA3D7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224515728837BF3000AA3D7 /* Message.swift */; };
@@ -115,6 +132,15 @@
 		C2032ABE2884AE0500C20FFF /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		C2032AC02884AFC100C20FFF /* CreateChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatViewController.swift; sourceTree = "<group>"; };
 		C2032AC12884AFC100C20FFF /* CreateChatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateChatViewController.xib; sourceTree = "<group>"; };
+		C204A7F1288A0503004535CA /* CreateMangaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMangaViewController.swift; sourceTree = "<group>"; };
+		C204A7F2288A0503004535CA /* CreateMangaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateMangaViewController.xib; sourceTree = "<group>"; };
+		C204A7F5288A0524004535CA /* CreateMangaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMangaViewModel.swift; sourceTree = "<group>"; };
+		C204A7F8288A090D004535CA /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		C204A7FD288A2320004535CA /* OptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
+		C204A7FE288A2320004535CA /* OptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionTableViewCell.xib; sourceTree = "<group>"; };
+		C204A801288A33A0004535CA /* Manga.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manga.swift; sourceTree = "<group>"; };
+		C204A803288A3471004535CA /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		C204A805288A347D004535CA /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		C20A7FB728769924004B4396 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C20A7FBF2876A429004B4396 /* MangaListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaListViewController.swift; sourceTree = "<group>"; };
 		C20A7FC02876A429004B4396 /* MangaListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MangaListViewController.xib; sourceTree = "<group>"; };
@@ -129,6 +155,13 @@
 		C2161236287EC78500C8EEA1 /* AuthorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorCollectionViewCell.swift; sourceTree = "<group>"; };
 		C2161237287EC78500C8EEA1 /* AuthorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorCollectionViewCell.xib; sourceTree = "<group>"; };
 		C216123A287EC8AF00C8EEA1 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
+		C21A3842288F82F3003815ED /* MangaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaTableViewCell.swift; sourceTree = "<group>"; };
+		C21A3843288F82F3003815ED /* MangaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MangaTableViewCell.xib; sourceTree = "<group>"; };
+		C21A3847288F835C003815ED /* MangaListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaListViewModel.swift; sourceTree = "<group>"; };
+		C21A384B288F8D60003815ED /* MangaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaDetailViewController.swift; sourceTree = "<group>"; };
+		C21A384C288F8D60003815ED /* MangaDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MangaDetailViewController.xib; sourceTree = "<group>"; };
+		C21A3850288F8DA0003815ED /* MangaDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaDetailViewModel.swift; sourceTree = "<group>"; };
+		C21A3852288F9AAA003815ED /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		C224515328837BDB000AA3D7 /* FriendRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequest.swift; sourceTree = "<group>"; };
 		C224515528837BE8000AA3D7 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		C224515728837BF3000AA3D7 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -200,6 +233,7 @@
 			files = (
 				B597FA35D9001CCB1B84C5E7 /* Pods_7_social_network_01.framework in Frameworks */,
 				C200F16F287AA4C9009E5C87 /* FirebaseFirestore in Frameworks */,
+				C204A7FC288A0A38004535CA /* RadioGroup in Frameworks */,
 				C200F171287AA4C9009E5C87 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,10 +353,59 @@
 			path = chat;
 			sourceTree = "<group>";
 		};
+		C204A7ED288A03D5004535CA /* createManga */ = {
+			isa = PBXGroup;
+			children = (
+				C204A7F0288A04E3004535CA /* views */,
+				C204A7EF288A04DD004535CA /* viewModel */,
+				C204A7EE288A04D6004535CA /* controllers */,
+			);
+			path = createManga;
+			sourceTree = "<group>";
+		};
+		C204A7EE288A04D6004535CA /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C204A7F1288A0503004535CA /* CreateMangaViewController.swift */,
+				C204A7F2288A0503004535CA /* CreateMangaViewController.xib */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		C204A7EF288A04DD004535CA /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C204A7F5288A0524004535CA /* CreateMangaViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		C204A7F0288A04E3004535CA /* views */ = {
+			isa = PBXGroup;
+			children = (
+				C204A7FD288A2320004535CA /* OptionTableViewCell.swift */,
+				C204A7FE288A2320004535CA /* OptionTableViewCell.xib */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		C204A7F7288A0579004535CA /* views */ = {
+			isa = PBXGroup;
+			children = (
+				C21A3842288F82F3003815ED /* MangaTableViewCell.swift */,
+				C21A3843288F82F3003815ED /* MangaTableViewCell.xib */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		C20A7FB92876A3E6004B4396 /* mangas */ = {
 			isa = PBXGroup;
 			children = (
+				C21A3849288F8D3F003815ED /* mangaDetail */,
+				C204A7ED288A03D5004535CA /* createManga */,
+				C21A3846288F833E003815ED /* viewModel */,
 				C20A7FBE2876A40C004B4396 /* controllers */,
+				C204A7F7288A0579004535CA /* views */,
 			);
 			path = mangas;
 			sourceTree = "<group>";
@@ -427,6 +510,40 @@
 				C2161237287EC78500C8EEA1 /* AuthorCollectionViewCell.xib */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		C21A3846288F833E003815ED /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C21A3847288F835C003815ED /* MangaListViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		C21A3849288F8D3F003815ED /* mangaDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C21A384F288F8D93003815ED /* viewModel */,
+				C21A384A288F8D46003815ED /* controllers */,
+			);
+			path = mangaDetail;
+			sourceTree = "<group>";
+		};
+		C21A384A288F8D46003815ED /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C21A384B288F8D60003815ED /* MangaDetailViewController.swift */,
+				C21A384C288F8D60003815ED /* MangaDetailViewController.xib */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		C21A384F288F8D93003815ED /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C21A3850288F8DA0003815ED /* MangaDetailViewModel.swift */,
+			);
+			path = viewModel;
 			sourceTree = "<group>";
 		};
 		C224516228839E0A000AA3D7 /* viewModel */ = {
@@ -603,6 +720,10 @@
 				C224515328837BDB000AA3D7 /* FriendRequest.swift */,
 				C224515528837BE8000AA3D7 /* Chat.swift */,
 				C224515728837BF3000AA3D7 /* Message.swift */,
+				C204A801288A33A0004535CA /* Manga.swift */,
+				C204A803288A3471004535CA /* Comment.swift */,
+				C204A805288A347D004535CA /* Category.swift */,
+				C21A3852288F9AAA003815ED /* Rating.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -631,6 +752,7 @@
 				C2486303286EB2250097D7A9 /* ErrorAlert.swift */,
 				C20A7FCB2876A4EF004B4396 /* ConfirmAlert.swift */,
 				C2032ABE2884AE0500C20FFF /* FloatingButton.swift */,
+				C204A7F8288A090D004535CA /* CheckBox.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -766,6 +888,7 @@
 				C2FEC5E5286D44A700220A13 /* Sources */,
 				C2FEC5E6286D44A700220A13 /* Frameworks */,
 				C2FEC5E7286D44A700220A13 /* Resources */,
+				147C7AC69C8EC85FE79423BE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -775,6 +898,7 @@
 			packageProductDependencies = (
 				C200F16E287AA4C9009E5C87 /* FirebaseFirestore */,
 				C200F170287AA4C9009E5C87 /* FirebaseStorage */,
+				C204A7FB288A0A38004535CA /* RadioGroup */,
 			);
 			productName = 7_social_network_01;
 			productReference = C2FEC5E9286D44A700220A13 /* 7_social_network_01.app */;
@@ -807,6 +931,7 @@
 				C2FEC608286D44A800220A13 /* Sources */,
 				C2FEC609286D44A800220A13 /* Frameworks */,
 				C2FEC60A286D44A800220A13 /* Resources */,
+				7ED264BCAD30CCD0D947F624 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -853,6 +978,7 @@
 			packageReferences = (
 				C200F16C287AA2F0009E5C87 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				C200F16D287AA4C9009E5C87 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				C204A7FA288A0A37004535CA /* XCRemoteSwiftPackageReference "RadioGroup" */,
 			);
 			productRefGroup = C2FEC5EA286D44A700220A13 /* Products */;
 			projectDirPath = "";
@@ -874,9 +1000,12 @@
 				C2FEC5FC286D44A700220A13 /* LaunchScreen.storyboard in Resources */,
 				C22451682883AB6B000AA3D7 /* FriendRequestsListViewController.xib in Resources */,
 				C2486301286EA9210097D7A9 /* ProfileViewController.xib in Resources */,
+				C21A384E288F8D60003815ED /* MangaDetailViewController.xib in Resources */,
 				C224516128839DFC000AA3D7 /* FriendTableViewCell.xib in Resources */,
 				C2161239287EC78500C8EEA1 /* AuthorCollectionViewCell.xib in Resources */,
+				C204A7F4288A0503004535CA /* CreateMangaViewController.xib in Resources */,
 				C2FEC620286D45E200220A13 /* GoogleService-Info.plist in Resources */,
+				C204A800288A2320004535CA /* OptionTableViewCell.xib in Resources */,
 				C2B3568B2886634C00FB1770 /* ChatViewController.xib in Resources */,
 				C2FEC5F9286D44A700220A13 /* Assets.xcassets in Resources */,
 				C20A7FC22876A429004B4396 /* MangaListViewController.xib in Resources */,
@@ -889,6 +1018,7 @@
 				C2B356912886638800FB1770 /* MessageTableViewCell.xib in Resources */,
 				C242E85428879FA9006DAF16 /* ChatTableViewCell.xib in Resources */,
 				C2032AC32884AFC100C20FFF /* CreateChatViewController.xib in Resources */,
+				C21A3845288F82F3003815ED /* MangaTableViewCell.xib in Resources */,
 				C20AC92B28810DC30041F170 /* AuthorDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -930,6 +1060,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		147C7AC69C8EC85FE79423BE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-7_social_network_01/Pods-7_social_network_01-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-7_social_network_01/Pods-7_social_network_01-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-7_social_network_01/Pods-7_social_network_01-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3129FC72CEFF3437969AEFD9 /* [CP] Check Pods Manifest.lock */ = {
@@ -976,6 +1123,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7ED264BCAD30CCD0D947F624 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-7_social_network_01-7_social_network_01UITests/Pods-7_social_network_01-7_social_network_01UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-7_social_network_01-7_social_network_01UITests/Pods-7_social_network_01-7_social_network_01UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-7_social_network_01-7_social_network_01UITests/Pods-7_social_network_01-7_social_network_01UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -985,7 +1149,10 @@
 			files = (
 				C213875F2886437900457DE2 /* CreateChatViewModel.swift in Sources */,
 				C224516428839E22000AA3D7 /* FriendRequestsViewModel.swift in Sources */,
+				C204A806288A347D004535CA /* Category.swift in Sources */,
 				C2B3568A2886634C00FB1770 /* ChatViewController.swift in Sources */,
+				C204A804288A3471004535CA /* Comment.swift in Sources */,
+				C21A3851288F8DA0003815ED /* MangaDetailViewModel.swift in Sources */,
 				C20AC92A28810DC30041F170 /* AuthorDetailViewController.swift in Sources */,
 				C2B356932886639A00FB1770 /* MessageViewModel.swift in Sources */,
 				C24862EA286EA0320097D7A9 /* NetworkManager.swift in Sources */,
@@ -994,11 +1161,14 @@
 				C2FEC5F7286D44A700220A13 /* __social_network_01.xcdatamodeld in Sources */,
 				C252AEE0287B7906004D34D8 /* ImageManager.swift in Sources */,
 				C224516F2883ABFC000AA3D7 /* ChatsListViewController.swift in Sources */,
+				C21A3853288F9AAA003815ED /* Rating.swift in Sources */,
+				C21A3848288F835C003815ED /* MangaListViewModel.swift in Sources */,
 				C231D425287C3DAB001B8C2C /* EditProfileViewModel.swift in Sources */,
 				C24862F5286EA3050097D7A9 /* BaseModel.swift in Sources */,
 				C20A7FC92876A46A004B4396 /* AuthorListViewController.swift in Sources */,
 				C274F26F28723A7E00D80B8D /* CoreDataManager.swift in Sources */,
 				C25299EB28768171007C74AB /* AuthData+CoreDataClass.swift in Sources */,
+				C204A7F3288A0503004535CA /* CreateMangaViewController.swift in Sources */,
 				C20A7FB828769924004B4396 /* ProfileViewModel.swift in Sources */,
 				C20AC9252880FE4E0041F170 /* AuthorsViewModel.swift in Sources */,
 				C2161238287EC78500C8EEA1 /* AuthorCollectionViewCell.swift in Sources */,
@@ -1012,24 +1182,30 @@
 				C2032AC22884AFC100C20FFF /* CreateChatViewController.swift in Sources */,
 				C22451672883AB6B000AA3D7 /* FriendRequestsListViewController.swift in Sources */,
 				C2FEC5F1286D44A700220A13 /* ViewController.swift in Sources */,
+				C21A3844288F82F3003815ED /* MangaTableViewCell.swift in Sources */,
 				C242E84F28879C00006DAF16 /* ChatsListViewModel.swift in Sources */,
 				C2460085287B233400E5959A /* DeviceImageLibraryViewController.swift in Sources */,
 				C224515828837BF3000AA3D7 /* Message.swift in Sources */,
 				C20AC92E28811C440041F170 /* AuthorDetailViewModel.swift in Sources */,
 				C24862E8286E9FA60097D7A9 /* FirebaseManager.swift in Sources */,
 				C224515628837BE8000AA3D7 /* Chat.swift in Sources */,
+				C21A384D288F8D60003815ED /* MangaDetailViewController.swift in Sources */,
 				C2FEC5ED286D44A700220A13 /* AppDelegate.swift in Sources */,
 				C24862DA286E939F0097D7A9 /* LoginViewController.swift in Sources */,
+				C204A7F9288A090E004535CA /* CheckBox.swift in Sources */,
 				C224516B2883ABEB000AA3D7 /* FriendsViewController.swift in Sources */,
 				C24862F3286EA2F90097D7A9 /* User.swift in Sources */,
 				C216123B287EC8AF00C8EEA1 /* FirebaseStorageManager.swift in Sources */,
+				C204A7F6288A0524004535CA /* CreateMangaViewModel.swift in Sources */,
 				C24862ED286EA1230097D7A9 /* LoginViewModel.swift in Sources */,
 				C20A7FCC2876A4EF004B4396 /* ConfirmAlert.swift in Sources */,
 				C2486300286EA9210097D7A9 /* ProfileViewController.swift in Sources */,
 				C2460083287B231B00E5959A /* ImagePickerViewController.swift in Sources */,
+				C204A802288A33A0004535CA /* Manga.swift in Sources */,
 				C2486304286EB2250097D7A9 /* ErrorAlert.swift in Sources */,
 				C24862F0286EA2BB0097D7A9 /* SignUpViewModel.swift in Sources */,
 				C2032ABF2884AE0500C20FFF /* FloatingButton.swift in Sources */,
+				C204A7FF288A2320004535CA /* OptionTableViewCell.swift in Sources */,
 				C2FEC5EF286D44A700220A13 /* SceneDelegate.swift in Sources */,
 				C2B3568D2886635900FB1770 /* ChatViewModel.swift in Sources */,
 				C224516028839DFC000AA3D7 /* FriendTableViewCell.swift in Sources */,
@@ -1398,6 +1574,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		C204A7FA288A0A37004535CA /* XCRemoteSwiftPackageReference "RadioGroup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yonat/RadioGroup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1410,6 +1594,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C200F16C287AA2F0009E5C87 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		C204A7FB288A0A38004535CA /* RadioGroup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C204A7FA288A0A37004535CA /* XCRemoteSwiftPackageReference "RadioGroup" */;
+			productName = RadioGroup;
 		};
 /* End XCSwiftPackageProductDependency section */
 

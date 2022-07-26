@@ -8,22 +8,53 @@
 import UIKit
 
 class MangaListViewController: UIViewController {
-
+    
+    @IBOutlet weak var mangasSearchBar: UISearchBar!
+    @IBOutlet weak var mangasTableView: UITableView!
+    
+    var viewmodel = MangaListViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        initViewModel()
+        mangasTableView.delegate = self
+        mangasTableView.dataSource = self
+        let uiNib = UINib(nibName: "MangaTableViewCell", bundle: nil)
+        mangasTableView.register(uiNib, forCellReuseIdentifier: "MangaCell")
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func createManga(_ sender: Any) {
+        let vc = CreateMangaViewController()
+        show(vc, sender: nil)
     }
-    */
+    
+    func initViewModel() {
+        viewmodel.getMangas()
+        viewmodel.reloadData = { [weak self] in
+            self?.mangasTableView.reloadData()
+        }
+    }
+}
 
+extension MangaListViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewmodel.mangas.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = mangasTableView.dequeueReusableCell(withIdentifier: "MangaCell") as? MangaTableViewCell ?? MangaTableViewCell()
+        
+        let cellData = viewmodel.getCellData(at: indexPath)
+        cell.setUpData(manga: cellData)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailsScreen = MangaDetailViewController()
+        let manga = viewmodel.getCellData(at: indexPath)
+        detailsScreen.mangaId = manga.id
+        
+        show(detailsScreen, sender: nil)
+    }
 }

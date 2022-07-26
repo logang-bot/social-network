@@ -100,6 +100,24 @@
       }
     },
     {
+      "identity" : "radiogroup",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/yonat/RadioGroup.git",
+      "state" : {
+        "revision" : "c2ce6b275fbd8ef970f85349d03e7ea0615ed495",
+        "version" : "1.4.4"
+      }
+    },
+    {
+      "identity" : "sweeterswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/yonat/SweeterSwift",
+      "state" : {
+        "revision" : "74b3d19dc80158b2a87240d05894154a1ba7f2ef",
+        "version" : "1.2.1"
+      }
+    },
+    {
       "identity" : "swift-protobuf",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",

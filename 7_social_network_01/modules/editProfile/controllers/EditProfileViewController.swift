@@ -8,12 +8,14 @@
 import UIKit
 import FirebaseFirestore
 import Firebase
+import SVProgressHUD
 
 class EditProfileViewController: ImagePickerViewController {
     
     var user: AuthData?
     var isEdditingPhoto = false
     var viewmodel = EditProfileViewModel()
+    let blurredBackgroundView = UIVisualEffectView()
     
     @IBOutlet weak var userPhotoImageVIew: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -29,6 +31,23 @@ class EditProfileViewController: ImagePickerViewController {
         setUpSettings()
         userPhotoImageVIew.layer.cornerRadius = userPhotoImageVIew.frame.width / 2
         resetButton.isHidden = true
+        
+//        self.navigationController?.navigationBar.isHidden = true
+          
+        
+        //blurredBackgroundView.frame = view.bounds
+        blurredBackgroundView.effect = UIBlurEffect(style: .systemMaterialLight)
+        view.addSubview(blurredBackgroundView)
+      
+        blurredBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        blurredBackgroundView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0.0).isActive = true
+        blurredBackgroundView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0.0).isActive = true
+        blurredBackgroundView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0.0).isActive = true
+        blurredBackgroundView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0.0).isActive = true
+
+        blurredBackgroundView.isHidden = true
+        
+        
     }
     
     func setUpSettings() {
@@ -57,6 +76,8 @@ class EditProfileViewController: ImagePickerViewController {
     func initViewModel() {
         viewmodel.user = user
         viewmodel.finishEditing = { [weak self] in
+            SVProgressHUD.dismiss()
+            self!.blurredBackgroundView.isHidden = true
             self?.navigationController?.popViewController(animated: true)
         }
     }
@@ -74,11 +95,12 @@ class EditProfileViewController: ImagePickerViewController {
         
         ConfirmAlert(title: "Confirm changes", message: "Are you sure you wanna save this changes?", preferredStyle: .alert).showAlert(target: self) { () in
             
+            SVProgressHUD.show()
+            self.blurredBackgroundView.isHidden = false
             let newData = [
                 "name": self.nameTextField.text!,
                 "email": self.emailTextField.text!,
-                "password": self.passwordTextField.text!,
-                "photo": "defaultUserPhoto"
+                "password": self.passwordTextField.text!
             ]
             
             if self.isEdditingPhoto {
