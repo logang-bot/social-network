@@ -33,12 +33,18 @@ class ChatViewController: UIViewController {
     
     func initViewModel() {
         viewmodel.chatId = chatId
-        viewmodel.getMessages()
+//        viewmodel.getMessages()
+        viewmodel.setChatListener()
         viewmodel.reloadData = { [weak self] in
             self?.messagesTableView.reloadData()
+            DispatchQueue.main.async {
+                if self!.viewmodel.messages.count != 0 {
+                    let indexPath = IndexPath(row: (self?.viewmodel.messages.count)!-1, section: 0)
+                    self?.messagesTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                }
+            }
         }
     }
-    
 }
 
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource {

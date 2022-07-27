@@ -42,6 +42,8 @@ class MessageTableViewCell: UITableViewCell {
             self.backgroundColor = .lightGray
             messageContentLabel.textColor = .white
             dateMessageLabel.textColor = .white
+            messageContentLabel.textAlignment = .right
+            dateMessageLabel.textAlignment = .right
             
             contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 0))
         } else {

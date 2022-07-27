@@ -13,6 +13,7 @@ class ChatViewModel {
     var reloadData: (() -> Void)?
     var messages = [Message]() {
         didSet {
+            messages = messages.sorted(by: {$0.createdAt < $1.createdAt})
             reloadData?()
         }
     }
@@ -21,11 +22,11 @@ class ChatViewModel {
     let currentUser = CoreDataManager.shared.getData().first as! AuthData
     
     func getMessages() {
+        // Get messages
         firebaseManager.getOneDocument(type: Chat.self, forCollection: .chats, id: chatId!) { [self] result in
             switch result {
             case .success(let chat):
-                let finalMessages = chat.messages.reversed()
-                finalMessages.forEach{messageId in
+                chat.messages.forEach{ messageId in
                     firebaseManager.getOneDocument(type: Message.self, forCollection: .messages, id: messageId) { result in
                         switch result {
                         case .success(let message):
@@ -42,6 +43,24 @@ class ChatViewModel {
         }
     }
     
+    func setChatListener() {
+//         Set listener
+        firebaseManager.listenCollectionChanges(type: Message.self, collection: .messages) {result in
+            switch result {
+            case .success(let messages):
+                print("listener working")
+                self.messages.removeAll()
+                let finalMessages = messages.reversed()
+                finalMessages.forEach { msg in
+                    if msg.idChat == self.chatId {
+                        self.messages.append(msg)
+                    }
+                }
+            case .failure:
+                print("listener for messages failure")
+            }
+        }
+    }
     
     func getCellData(at indexPath: IndexPath) -> Message {
         return messages[indexPath.row]
@@ -71,7 +90,7 @@ class ChatViewModel {
                 "messages": FieldValue.arrayUnion([messageID])
             ]
             firebaseManager.updateFieldsInDocument(documentId: chatId!, values: newMessageChat, collection: .chats) { _ in
-                self.messages.append(newMessage)
+//                self.messages.append(newMessage)
             }
         }
     }
