@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="categoriesTableView" destination="bEu-4S-qBt" id="7GW-CE-rDc"/>
                 <outlet property="coverImageView" destination="DZf-VW-mqE" id="dVv-cn-SPR"/>
+                <outlet property="createButton" destination="b65-uY-8bx" id="59D-6b-G2I"/>
                 <outlet property="descriptionTextField" destination="KYl-UT-iaK" id="AQs-eb-umz"/>
                 <outlet property="nameTextField" destination="sZE-IM-wHM" id="NHo-em-7Du"/>
                 <outlet property="resetButton" destination="Ubv-re-Ng7" id="KTZ-S9-l42"/>

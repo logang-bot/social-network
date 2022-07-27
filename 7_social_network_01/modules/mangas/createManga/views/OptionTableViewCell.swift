@@ -28,13 +28,14 @@ class OptionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @discardableResult
     func toggleStatus() -> String {
         status = !status
         optionStatus.image = status ? checkedImage : uncheckedImage
         if status {
             return optionLabel.text!
         } else {
-            return ""
+            return optionLabel.text!
         }
     }
     

@@ -57,6 +57,8 @@
 		C224516F2883ABFC000AA3D7 /* ChatsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224516D2883ABFC000AA3D7 /* ChatsListViewController.swift */; };
 		C22451702883ABFC000AA3D7 /* ChatsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C224516E2883ABFC000AA3D7 /* ChatsListViewController.xib */; };
 		C231D425287C3DAB001B8C2C /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C231D424287C3DAB001B8C2C /* EditProfileViewModel.swift */; };
+		C2320EB32890DAFF0081D3AD /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2320EB12890DAFF0081D3AD /* CommentTableViewCell.swift */; };
+		C2320EB42890DAFF0081D3AD /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2320EB22890DAFF0081D3AD /* CommentTableViewCell.xib */; };
 		C242E84C28879810006DAF16 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C242E84B28879810006DAF16 /* Date.swift */; };
 		C242E84F28879C00006DAF16 /* ChatsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C242E84E28879C00006DAF16 /* ChatsListViewModel.swift */; };
 		C242E85328879FA9006DAF16 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C242E85128879FA9006DAF16 /* ChatTableViewCell.swift */; };
@@ -175,6 +177,8 @@
 		C224516D2883ABFC000AA3D7 /* ChatsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsListViewController.swift; sourceTree = "<group>"; };
 		C224516E2883ABFC000AA3D7 /* ChatsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatsListViewController.xib; sourceTree = "<group>"; };
 		C231D424287C3DAB001B8C2C /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		C2320EB12890DAFF0081D3AD /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		C2320EB22890DAFF0081D3AD /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		C242E84B28879810006DAF16 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		C242E84E28879C00006DAF16 /* ChatsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsListViewModel.swift; sourceTree = "<group>"; };
 		C242E85128879FA9006DAF16 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
@@ -523,6 +527,7 @@
 		C21A3849288F8D3F003815ED /* mangaDetail */ = {
 			isa = PBXGroup;
 			children = (
+				C2320EB02890DADE0081D3AD /* views */,
 				C21A384F288F8D93003815ED /* viewModel */,
 				C21A384A288F8D46003815ED /* controllers */,
 			);
@@ -560,6 +565,15 @@
 				C231D424287C3DAB001B8C2C /* EditProfileViewModel.swift */,
 			);
 			path = viewModel;
+			sourceTree = "<group>";
+		};
+		C2320EB02890DADE0081D3AD /* views */ = {
+			isa = PBXGroup;
+			children = (
+				C2320EB12890DAFF0081D3AD /* CommentTableViewCell.swift */,
+				C2320EB22890DAFF0081D3AD /* CommentTableViewCell.xib */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 		C242E84A288797EC006DAF16 /* extensions */ = {
@@ -619,9 +633,9 @@
 		C24862D3286E88C20097D7A9 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				C20A7FBA2876A3EB004B4396 /* authors */,
 				C20AC92628810D980041F170 /* authorDetail */,
 				C20A7FBB2876A3F2004B4396 /* chats */,
-				C20A7FBA2876A3EB004B4396 /* authors */,
 				C20A7FB92876A3E6004B4396 /* mangas */,
 				C25299ED2876882C007C74AB /* editProfile */,
 				C24862F7286EA8E70097D7A9 /* profile */,
@@ -1015,6 +1029,7 @@
 				C224516C2883ABEB000AA3D7 /* FriendsViewController.xib in Resources */,
 				C20A7FCA2876A46A004B4396 /* AuthorListViewController.xib in Resources */,
 				C25299F22876884D007C74AB /* EditProfileViewController.xib in Resources */,
+				C2320EB42890DAFF0081D3AD /* CommentTableViewCell.xib in Resources */,
 				C2B356912886638800FB1770 /* MessageTableViewCell.xib in Resources */,
 				C242E85428879FA9006DAF16 /* ChatTableViewCell.xib in Resources */,
 				C2032AC32884AFC100C20FFF /* CreateChatViewController.xib in Resources */,
@@ -1151,6 +1166,7 @@
 				C224516428839E22000AA3D7 /* FriendRequestsViewModel.swift in Sources */,
 				C204A806288A347D004535CA /* Category.swift in Sources */,
 				C2B3568A2886634C00FB1770 /* ChatViewController.swift in Sources */,
+				C2320EB32890DAFF0081D3AD /* CommentTableViewCell.swift in Sources */,
 				C204A804288A3471004535CA /* Comment.swift in Sources */,
 				C21A3851288F8DA0003815ED /* MangaDetailViewModel.swift in Sources */,
 				C20AC92A28810DC30041F170 /* AuthorDetailViewController.swift in Sources */,

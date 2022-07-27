@@ -21,6 +21,7 @@ enum FirebaseCollections: String {
     case mangas
     case comments
     case categories
+    case ratings
 }
 
 class FirebaseManager {

@@ -11,7 +11,7 @@ struct Rating: Codable, BaseModel {
     var id: String
     let idUser: String
     let idManga: String
-    var rating: String
+    var rating: Int
     let createdAt: Date
     var updatedAt: Date
 }
