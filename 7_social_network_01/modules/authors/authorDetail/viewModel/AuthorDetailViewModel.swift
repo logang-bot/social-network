@@ -8,26 +8,21 @@
 import Foundation
 import FirebaseFirestore
 
-class AuthorDetailViewModel {
-    var authorId: String?
-    var setData: (()->Void)?
+class AuthorDetailViewModel: MangasTableViewModel {
     var followOption: String?
     var friendshipOption: String?
-    
     var friendshipStatus: FriendRequest?
-    let currentUser = CoreDataManager.shared.getData().first as! AuthData
     
     var authorData: User? {
         didSet {
             checkFollowStatus()
             checkFriendShipStatus()
-            setData?()
+            reloadData?()
         }
     }
-    var firebaseManager = FirebaseManager.shared
     
     init(userId: String) {
-        self.authorId = userId
+        super.init(for: userId)
     }
     
     func getAuthor() {

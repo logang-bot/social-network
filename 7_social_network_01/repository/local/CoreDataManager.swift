@@ -71,15 +71,8 @@ class CoreDataManager {
         guard let entity = NSEntityDescription.entity(forEntityName: "AuthData", in: context) else {return}
         guard let entry = NSManagedObject(entity: entity, insertInto: context) as? AuthData else {return}
         
-        entry.isLoggedIn = true
         entry.idUser = user.id
-        entry.name = user.name
-        entry.email = user.email
         entry.photo = user.photo
-        entry.password = user.password
-        entry.followers = Int64(user.followers.count)
-        entry.following = Int64(user.following.count)
-        entry.friends = Int64(user.friends.count)
         
         try? context.save()
     }

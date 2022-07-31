@@ -17,6 +17,8 @@ class AuthorDetailViewController: UIViewController {
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var sendFriendReqButton: UIButton!
     
+    @IBOutlet weak var mangasTableView: UITableView!
+    
     var userId: String?
     var viewmodel: AuthorDetailViewModel?
     
@@ -24,6 +26,10 @@ class AuthorDetailViewController: UIViewController {
         super.viewDidLoad()
         initViewModel()
         photoImageView.layer.cornerRadius = photoImageView.frame.width / 2
+        mangasTableView.delegate = self
+        mangasTableView.dataSource = self
+        let uiNib = UINib(nibName: "MangaTableViewCell", bundle: nil)
+        mangasTableView.register(uiNib, forCellReuseIdentifier: "MangaCell")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -33,8 +39,10 @@ class AuthorDetailViewController: UIViewController {
     func initViewModel() {
         viewmodel = AuthorDetailViewModel(userId: self.userId!)
         viewmodel?.getAuthor()
-        viewmodel?.setData = {[weak self] in
+        viewmodel?.getMangas()
+        viewmodel?.reloadData = {[weak self] in
             self?.setupData()
+            self?.mangasTableView.reloadData()
         }
     }
     
@@ -46,8 +54,10 @@ class AuthorDetailViewController: UIViewController {
         sendFriendReqButton.setTitle(viewmodel?.friendshipOption, for: .normal)
         self.title = viewmodel?.authorData?.name 
         
+        guard let authorPhoto = viewmodel?.authorData?.photo else {return}
+        
         if viewmodel?.authorData?.photo != "defaultUserPhoto" {
-            ImageManager.shared.loadImage(from: URL(string: (viewmodel?.authorData?.photo)!)!) { result in
+            ImageManager.shared.loadImage(from: URL(string: authorPhoto)!) { result in
                 switch result {
                 case .success(let image):
                     self.photoImageView.image = image
@@ -78,5 +88,20 @@ class AuthorDetailViewController: UIViewController {
         } else {
             followButton.setTitle("Add friend", for: .normal)
         }
+    }
+}
+
+extension AuthorDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        (viewmodel?.mangas.count)!
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = mangasTableView.dequeueReusableCell(withIdentifier: "MangaCell") as? MangaTableViewCell ?? MangaTableViewCell()
+        
+        let cellData = viewmodel!.getCellData(at: indexPath)
+        cell.setUpData(manga: cellData)
+        
+        return cell
     }
 }

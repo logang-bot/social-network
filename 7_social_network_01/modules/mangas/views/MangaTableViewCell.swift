@@ -31,6 +31,7 @@ class MangaTableViewCell: UITableViewCell {
     func setUpData(manga: Manga) {
         titleLabel.text = manga.name
         descriptionLabel.text = manga.description
+        rankingLabel.text = String(manga.ratingAvg)
         ImageManager.shared.loadImage(from: URL(string: manga.frontPage)!) { result in
             switch result {
             case .success(let image):

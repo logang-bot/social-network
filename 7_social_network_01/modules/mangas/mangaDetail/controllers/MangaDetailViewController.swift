@@ -30,6 +30,7 @@ class MangaDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButton()
+        coverImageView.layer.cornerRadius = 10
         rankStackView.isHidden = true
         commentsTableView.delegate = self
         commentsTableView.dataSource = self
@@ -73,6 +74,7 @@ class MangaDetailViewController: UIViewController {
         descriptionLabel.text = viewmodel?.mangaData?.description
         categoriesLabel.text = viewmodel?.mangaData?.categories.joined(separator: ", ")
         rankLabel.text = String((viewmodel?.mangaData?.ratingAvg)!)
+        myRankLabel.text = viewmodel?.myCurrentRank
         authorLabel.text = viewmodel?.mangaAuthor
         editButton.isHidden = !viewmodel!.isEditable
         rankStackView.isHidden = viewmodel!.isEditable

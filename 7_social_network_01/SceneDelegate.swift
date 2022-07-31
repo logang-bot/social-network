@@ -16,15 +16,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         Self.shared = self
         
-        var loginState: AuthData = AuthData()
-        var state: Bool = false
+        var localUser: AuthData = AuthData()
         if (CoreDataManager.shared.getData().count != 0) {
-            loginState = CoreDataManager.shared.getData().first as! AuthData
-            state = loginState.isLoggedIn
+            localUser = CoreDataManager.shared.getData().first as! AuthData
+            setupRootControllerIfNeeded(validUser: true)
         }
-        print(loginState)
-        setupRootControllerIfNeeded(validUser: state)
-        
+    
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window = self.window
         guard let _ = (scene as? UIWindowScene) else { return }
@@ -46,16 +43,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func getRootViewControllerForInvalidUser() -> UIViewController {
         let navController = UINavigationController(rootViewController: LoginViewController())
-        
         return navController
     }
     
     func getRootViewControllerForValidUser() -> UIViewController {
         // Create TabBarVC
         let tabBarVC = UITabBarController()
-        tabBarVC.view.backgroundColor = .systemBackground
-        UITabBar.appearance().barTintColor = .systemBackground
-        tabBarVC.tabBar.tintColor = UIColor(named: "primary")
+        tabBarVC.tabBar.isTranslucent = false
+        tabBarVC.tabBar.barTintColor = .black
+//        tabBarVC.view.backgroundColor = .blue
+//        UITabBar.appearance().barTintColor = .black
+        
         
         // Add VCs to TabBarVC
         tabBarVC.viewControllers = [

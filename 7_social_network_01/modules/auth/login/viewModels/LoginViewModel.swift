@@ -15,7 +15,5 @@ class LoginViewModel {
         AuthFirebaseManager.shared.login(email: email, password: password) { result in
             completion(result)
         }
-        
     }
-    
 }

@@ -18,7 +18,6 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Sign Up"
     }
     
     @IBAction func addUser(_ sender: Any) {

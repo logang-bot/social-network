@@ -16,6 +16,7 @@ class MangaListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Mangas"
         initViewModel()
         mangasTableView.delegate = self
         mangasTableView.dataSource = self

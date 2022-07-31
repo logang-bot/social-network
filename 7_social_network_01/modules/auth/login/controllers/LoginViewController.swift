@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import CoreData
+import SVProgressHUD
 
 class LoginViewController: UIViewController {
 
@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func logIn(_ sender: Any) {
+        SVProgressHUD.show()
         let email = emailTextField.text ?? ""
         let pass = passwordTextField.text ?? ""
         LoginViewModel.shared.login(email: email, password: pass) { result in
@@ -25,8 +26,10 @@ class LoginViewController: UIViewController {
             case .success(let user):
                 print("User", user)
                 CoreDataManager.shared.saveLocalUser(user: user)
+                SVProgressHUD.dismiss()
                 SceneDelegate.shared?.setupRootControllerIfNeeded(validUser: true)
             case .failure(let error):
+                SVProgressHUD.dismiss()
                 ErrorAlert.shared.showAlert(title: "The email or the password is incorrect", target: self)
                 print("Error", error)
             }

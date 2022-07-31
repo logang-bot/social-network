@@ -12,10 +12,10 @@ import SVProgressHUD
 
 class EditProfileViewController: ImagePickerViewController {
     
-    var user: AuthData?
+    var user: User?
     var isEdditingPhoto = false
     var viewmodel = EditProfileViewModel()
-    let blurredBackgroundView = UIVisualEffectView()
+    var blurredBackgroundView: BlurredBackground?
     
     @IBOutlet weak var userPhotoImageVIew: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -26,31 +26,17 @@ class EditProfileViewController: ImagePickerViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Edit Profile"
         setFields()
         initViewModel()
         setUpSettings()
-        userPhotoImageVIew.layer.cornerRadius = userPhotoImageVIew.frame.width / 2
-        resetButton.isHidden = true
-        
-//        self.navigationController?.navigationBar.isHidden = true
-          
-        
-        //blurredBackgroundView.frame = view.bounds
-        blurredBackgroundView.effect = UIBlurEffect(style: .systemMaterialLight)
-        view.addSubview(blurredBackgroundView)
-      
-        blurredBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        blurredBackgroundView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0.0).isActive = true
-        blurredBackgroundView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0.0).isActive = true
-        blurredBackgroundView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0.0).isActive = true
-        blurredBackgroundView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0.0).isActive = true
-
-        blurredBackgroundView.isHidden = true
-        
-        
     }
     
     func setUpSettings() {
+        userPhotoImageVIew.layer.cornerRadius = userPhotoImageVIew.frame.width / 2
+        resetButton.isHidden = true
+        blurredBackgroundView = BlurredBackground(parent: self)
+        blurredBackgroundView?.isHidden = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.showPhotoOptions))
         userPhotoImageVIew.gestureRecognizers = [tapGesture]
         userPhotoImageVIew.isUserInteractionEnabled = true
@@ -77,7 +63,7 @@ class EditProfileViewController: ImagePickerViewController {
         viewmodel.user = user
         viewmodel.finishEditing = { [weak self] in
             SVProgressHUD.dismiss()
-            self!.blurredBackgroundView.isHidden = true
+            self!.blurredBackgroundView!.isHidden = true
             self?.navigationController?.popViewController(animated: true)
         }
     }
@@ -96,7 +82,7 @@ class EditProfileViewController: ImagePickerViewController {
         ConfirmAlert(title: "Confirm changes", message: "Are you sure you wanna save this changes?", preferredStyle: .alert).showAlert(target: self) { () in
             
             SVProgressHUD.show()
-            self.blurredBackgroundView.isHidden = false
+            self.blurredBackgroundView!.isHidden = false
             let newData = [
                 "name": self.nameTextField.text!,
                 "email": self.emailTextField.text!,
@@ -117,7 +103,7 @@ class EditProfileViewController: ImagePickerViewController {
     }
     
     @IBAction func resetPhoto(_ sender: Any) {
-        userPhotoImageVIew.image = UIImage(named: "defaultUserPhoto")
+        userPhotoImageVIew.image = UIImage(named: AppConstants.defaultAvatar)
         resetButton.isHidden = true
         isEdditingPhoto = false
     }
@@ -127,8 +113,8 @@ class EditProfileViewController: ImagePickerViewController {
         emailTextField.text = user?.email
         passwordTextField.text = user?.password
         
-        if user?.photo == "defaultUserPhoto" {
-            userPhotoImageVIew.image = UIImage(named: "defaultUserPhoto")
+        if user?.photo == AppConstants.defaultAvatar {
+            userPhotoImageVIew.image = UIImage(named: AppConstants.defaultAvatar)
         }
         
         else {
