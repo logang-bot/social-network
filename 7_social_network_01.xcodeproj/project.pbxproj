@@ -33,6 +33,7 @@
 		C20AC92A28810DC30041F170 /* AuthorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20AC92828810DC30041F170 /* AuthorDetailViewController.swift */; };
 		C20AC92B28810DC30041F170 /* AuthorDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C20AC92928810DC30041F170 /* AuthorDetailViewController.xib */; };
 		C20AC92E28811C440041F170 /* AuthorDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20AC92D28811C440041F170 /* AuthorDetailViewModel.swift */; };
+		C20FE9F82899651E001A0968 /* NoFoundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20FE9F72899651E001A0968 /* NoFoundLabel.swift */; };
 		C2127898289710AE00D0D771 /* BlurredBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2127897289710AE00D0D771 /* BlurredBackground.swift */; };
 		C213875F2886437900457DE2 /* CreateChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C213875E2886437900457DE2 /* CreateChatViewModel.swift */; };
 		C2161238287EC78500C8EEA1 /* AuthorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2161236287EC78500C8EEA1 /* AuthorCollectionViewCell.swift */; };
@@ -158,6 +159,7 @@
 		C20AC92828810DC30041F170 /* AuthorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorDetailViewController.swift; sourceTree = "<group>"; };
 		C20AC92928810DC30041F170 /* AuthorDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorDetailViewController.xib; sourceTree = "<group>"; };
 		C20AC92D28811C440041F170 /* AuthorDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorDetailViewModel.swift; sourceTree = "<group>"; };
+		C20FE9F72899651E001A0968 /* NoFoundLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoFoundLabel.swift; sourceTree = "<group>"; };
 		C2127897289710AE00D0D771 /* BlurredBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredBackground.swift; sourceTree = "<group>"; };
 		C213875E2886437900457DE2 /* CreateChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatViewModel.swift; sourceTree = "<group>"; };
 		C2161236287EC78500C8EEA1 /* AuthorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -306,9 +308,9 @@
 		C2032AB7288489AB00C20FFF /* activeChats */ = {
 			isa = PBXGroup;
 			children = (
-				C242E85028879C04006DAF16 /* views */,
 				C242E84D28879BEC006DAF16 /* viewModel */,
 				C2032AB9288489DE00C20FFF /* controllers */,
+				C242E85028879C04006DAF16 /* views */,
 			);
 			path = activeChats;
 			sourceTree = "<group>";
@@ -361,8 +363,8 @@
 			isa = PBXGroup;
 			children = (
 				C2B356872886630E00FB1770 /* viewModel */,
-				C2B356862886630900FB1770 /* views */,
 				C2B35685288662FE00FB1770 /* controllers */,
+				C2B356862886630900FB1770 /* views */,
 			);
 			path = chat;
 			sourceTree = "<group>";
@@ -370,9 +372,9 @@
 		C204A7ED288A03D5004535CA /* createManga */ = {
 			isa = PBXGroup;
 			children = (
-				C204A7F0288A04E3004535CA /* views */,
 				C204A7EF288A04DD004535CA /* viewModel */,
 				C204A7EE288A04D6004535CA /* controllers */,
+				C204A7F0288A04E3004535CA /* views */,
 			);
 			path = createManga;
 			sourceTree = "<group>";
@@ -780,6 +782,7 @@
 				C204A7F8288A090D004535CA /* CheckBox.swift */,
 				C25235DC2896DD56005E3397 /* MangasTableViewModel.swift */,
 				C2127897289710AE00D0D771 /* BlurredBackground.swift */,
+				C20FE9F72899651E001A0968 /* NoFoundLabel.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -1203,6 +1206,7 @@
 			files = (
 				C213875F2886437900457DE2 /* CreateChatViewModel.swift in Sources */,
 				C224516428839E22000AA3D7 /* FriendRequestsViewModel.swift in Sources */,
+				C20FE9F82899651E001A0968 /* NoFoundLabel.swift in Sources */,
 				C204A806288A347D004535CA /* Category.swift in Sources */,
 				C2B3568A2886634C00FB1770 /* ChatViewController.swift in Sources */,
 				C2320EB32890DAFF0081D3AD /* CommentTableViewCell.swift in Sources */,

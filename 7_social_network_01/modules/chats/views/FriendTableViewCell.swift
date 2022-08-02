@@ -9,6 +9,9 @@ import UIKit
 
 class FriendTableViewCell: UITableViewCell {
     
+    static let identifier = "FriendCell"
+    static let nibName = "FriendTableViewCell"
+    
     @IBOutlet weak var userPhoto: UIImageView!
     @IBOutlet weak var userName: UILabel!
     
@@ -29,7 +32,7 @@ class FriendTableViewCell: UITableViewCell {
             switch result {
             case .success(let user):
                 self.userName.text = user.name
-                if user.photo != "defaultUserPhoto" {
+                if user.photo != AppConstants.defaultAvatar {
                     ImageManager.shared.loadImage(from: URL(string: user.photo)!) {result in
                         switch result {
                         case .success(let image):

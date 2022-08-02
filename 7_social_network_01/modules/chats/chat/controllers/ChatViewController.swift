@@ -19,8 +19,8 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
         messagesTableView.delegate = self
         messagesTableView.dataSource = self
-        let uiNib = UINib(nibName: "MessageTableViewCell", bundle: nil)
-        messagesTableView.register(uiNib, forCellReuseIdentifier: "MessageCell")
+        let uiNib = UINib(nibName: MessageTableViewCell.nibName, bundle: nil)
+        messagesTableView.register(uiNib, forCellReuseIdentifier: MessageTableViewCell.identifier)
         initViewModel()
         messagesTableView.rowHeight = UITableView.automaticDimension
         messagesTableView.estimatedRowHeight = 600
@@ -53,24 +53,16 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = messagesTableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as? MessageTableViewCell else {
+        guard let cell = messagesTableView.dequeueReusableCell(withIdentifier: MessageTableViewCell.identifier, for: indexPath) as? MessageTableViewCell else {
             return MessageTableViewCell()
         }
         
         let cellData = viewmodel.getCellData(at: indexPath)
         cell.messageContentLabel.text = cellData.content
-//        print(Date.getFixedDate(date: cellData.createdAt))
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "hh:mm:ss"
-
-//        dateMessageLabel.text = dateFormatter.string(from: Date.getFixedDate(date: cellData.createdAt))
-//        print(dateFormatter.string(from: Date.getFixedDate(date: cellData.createdAt)))
-//        print(dateFormatter.string(from: cellData.createdAt))
         cell.dateMessageLabel.text = dateFormatter.string(from: cellData.createdAt)
-//        cell.idSender = cellData.idSender
         cell.setupMessageStyle(idSender: cellData.idSender)
-//        cell.setUpData(idMessage: cellData)
-//        cell.messageContentLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
         
         return cell
     }

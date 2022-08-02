@@ -31,7 +31,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Uiy-f2-Maz">
-                    <rect key="frame" x="0.0" y="116" width="414" height="746"/>
+                    <rect key="frame" x="20" y="126" width="374" height="726"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
@@ -39,13 +39,13 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="TCD-Cg-VJd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="1ax-wf-G0y"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Uiy-f2-Maz" secondAttribute="bottom" id="ETj-Fe-lXe"/>
-                <constraint firstItem="Uiy-f2-Maz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="TxR-6z-kDt"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Uiy-f2-Maz" secondAttribute="trailing" id="Wiq-MK-qWO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Uiy-f2-Maz" secondAttribute="bottom" constant="10" id="ETj-Fe-lXe"/>
+                <constraint firstItem="Uiy-f2-Maz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="TxR-6z-kDt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Uiy-f2-Maz" secondAttribute="trailing" constant="20" id="Wiq-MK-qWO"/>
                 <constraint firstItem="TCD-Cg-VJd" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="d2h-v5-lAs"/>
                 <constraint firstItem="TCD-Cg-VJd" firstAttribute="top" secondItem="AI0-ew-jq4" secondAttribute="bottom" id="sU1-NX-VPQ"/>
                 <constraint firstItem="AI0-ew-jq4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xg0-5U-73X"/>
-                <constraint firstItem="Uiy-f2-Maz" firstAttribute="top" secondItem="TCD-Cg-VJd" secondAttribute="bottom" id="xjL-1w-pdQ"/>
+                <constraint firstItem="Uiy-f2-Maz" firstAttribute="top" secondItem="TCD-Cg-VJd" secondAttribute="bottom" constant="10" id="xjL-1w-pdQ"/>
                 <constraint firstItem="AI0-ew-jq4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="z1H-bj-uuq"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="AI0-ew-jq4" secondAttribute="trailing" id="zyQ-Fz-aqa"/>
             </constraints>

@@ -15,8 +15,8 @@ class FriendRequestsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initViewModel()
-        let uiNib = UINib(nibName: "FriendTableViewCell", bundle: nil)
-        requestsTableView.register(uiNib, forCellReuseIdentifier: "FriendCell")
+        let uiNib = UINib(nibName: FriendTableViewCell.nibName, bundle: nil)
+        requestsTableView.register(uiNib, forCellReuseIdentifier: FriendTableViewCell.identifier)
         requestsTableView.delegate = self
         requestsTableView.dataSource = self
     }
@@ -35,7 +35,7 @@ extension FriendRequestsListViewController: UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = requestsTableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as? FriendTableViewCell ?? FriendTableViewCell()
+        let cell = requestsTableView.dequeueReusableCell(withIdentifier: FriendTableViewCell.identifier, for: indexPath) as? FriendTableViewCell ?? FriendTableViewCell()
         
         let cellData = viewmodel.getCellData(at: indexPath)
         cell.setUpData(idFriend: cellData.idSender)

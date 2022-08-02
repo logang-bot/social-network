@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Codable, BaseModel {
+struct User: Codable, Equatable, BaseModel {
     var id: String
     let name: String
     let email: String
@@ -20,5 +20,12 @@ struct User: Codable, BaseModel {
     var chats: [String]
     let createdAt: Date
     let updatedAt: Date
+    
+    static func == (lhs: User, rhs: User) -> Bool {
+        return
+            lhs.id == rhs.id &&
+            lhs.name == rhs.name &&
+            lhs.email == rhs.email
+    }
 }
 

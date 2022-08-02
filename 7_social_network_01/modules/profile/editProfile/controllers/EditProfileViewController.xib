@@ -127,7 +127,9 @@
                     <rect key="frame" x="157.5" y="598" width="99.5" height="31"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" title="Update Info"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Update Info">
+                        <color key="baseBackgroundColor" systemColor="labelColor"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="updateInfo:" destination="-1" eventType="touchUpInside" id="000-Yo-FFS"/>
                     </connections>
@@ -185,6 +187,9 @@
     </objects>
     <resources>
         <image name="defaultUserPhoto" width="300" height="300"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBrownColor">
             <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

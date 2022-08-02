@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-class MangaDetailViewModel {
+class MangaDetailViewModel: LocalViewModel {
     var mangaId: String?
     var setData: (()->Void)?
     var reloadComments: (()->Void)?
@@ -26,10 +26,6 @@ class MangaDetailViewModel {
             setData?()
         }
     }
-    
-    let currentUser = CoreDataManager.shared.getData().first as! AuthData
-    var firebaseManager = FirebaseManager.shared
-    
     init(mangaId: String) {
         self.mangaId = mangaId
     }
@@ -104,14 +100,14 @@ class MangaDetailViewModel {
                     ]
                     
                     firebaseManager.updateFieldsInDocument(documentId: mangaCurrentRating.first!.id, values: ratingNewAvg, collection: .ratings) {_ in
-                        self.updateRatingAvg(rating: rating)
+                        self.updateRatingAvg(rating: rating, oldRating: mangaCurrentRating.first!.rating)
                     }
                 }
                 else {
                     let ratingID = self.firebaseManager.getDocID(forCollection: .ratings)
                     let newRating = Rating(id: ratingID, idUser: currentUser.idUser!, idManga: self.mangaData!.id, rating: rating, createdAt: Date(), updatedAt: Date())
                     self.firebaseManager.addDocument(document: newRating, collection: .ratings) { [self] result in
-                        self.updateRatingAvg(rating: newRating.rating)
+                        self.updateRatingAvg(rating: newRating.rating, isNew: true)
                     }
                 }
             case .failure(let error):
@@ -120,14 +116,23 @@ class MangaDetailViewModel {
         }
     }
     
-    func updateRatingAvg(rating: Int, isNew: Bool = false) {
-        let newRatingAvg = (self.mangaData!.ratingAvg * Double(mangaData!.numRatings) + Double(rating)) / Double(mangaData!.numRatings + 1)
-        
-        let mangaNewRating = [
-            "numRatings": self.mangaData!.numRatings + 1,
-            "ratingAvg": newRatingAvg
+    func updateRatingAvg(rating: Int, isNew: Bool = false, oldRating: Int = 0) {
+        var mangaNewRating: [String: Any] = [:]
+        if isNew {
+            let newRatingAvg = (self.mangaData!.ratingAvg * Double(mangaData!.numRatings) + Double(rating)) / Double(mangaData!.numRatings + 1)
             
-        ] as [String : Any]
+            mangaNewRating = [
+                "numRatings": self.mangaData!.numRatings + 1,
+                "ratingAvg": newRatingAvg
+            ]
+        }
+        else {
+            let newRatingAvg = ((self.mangaData!.ratingAvg * Double(mangaData!.numRatings)) + Double(rating) - Double(oldRating)) / Double(mangaData!.numRatings)
+            
+            mangaNewRating = [
+                "ratingAvg": newRatingAvg
+            ]
+        }
         
         firebaseManager.updateFieldsInDocument(documentId: self.mangaData!.id, values: mangaNewRating, collection: .mangas) { _ in
 //                self.finishEditing?()

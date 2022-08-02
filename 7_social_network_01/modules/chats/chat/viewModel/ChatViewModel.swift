@@ -8,18 +8,14 @@
 import Foundation
 import FirebaseFirestore
 
-class ChatViewModel {
+class ChatViewModel: LocalViewModel {
     var chatId: String?
-    var reloadData: (() -> Void)?
     var messages = [Message]() {
         didSet {
             messages = messages.sorted(by: {$0.createdAt < $1.createdAt})
             reloadData?()
         }
     }
-//    var messages = [String]()
-    var firebaseManager = FirebaseManager.shared
-    let currentUser = CoreDataManager.shared.getData().first as! AuthData
     
     func getMessages() {
         // Get messages

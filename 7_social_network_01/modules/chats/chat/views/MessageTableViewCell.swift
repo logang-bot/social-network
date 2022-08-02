@@ -9,6 +9,8 @@ import UIKit
 
 class MessageTableViewCell: UITableViewCell {
     
+    static let identifier = "MessageCell"
+    static let nibName = "MessageTableViewCell"
     
     @IBOutlet weak var messageContentLabel: UILabel!
     
@@ -26,9 +28,13 @@ class MessageTableViewCell: UITableViewCell {
         if idSender != nil {
             setupMessageStyle(idSender: idSender!)
         }
-//        self.layer.borderColor = .init(red: 255, green: 255, blue: 255, alpha: 0)
-//        self.layer.borderWidth = 5
     }
+    
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//
+//        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0))
+//    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -50,6 +56,8 @@ class MessageTableViewCell: UITableViewCell {
             self.backgroundColor = .white
             messageContentLabel.textColor = .black
             dateMessageLabel.textColor = .black
+            messageContentLabel.textAlignment = .left
+            dateMessageLabel.textAlignment = .left
         }
     }
 }

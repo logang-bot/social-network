@@ -10,10 +10,14 @@ import FirebaseFirestore
 import Firebase
 import UIKit
 
+enum FirebaseStorageFolders: String {
+    case photos
+    case covers
+}
 
 class FirebaseStorageManager {
     static let shared = FirebaseStorageManager()
-    func uploadPhoto(file: UIImage, route: String, completion: @escaping (_ url: URL) -> Void) {
+    func uploadPhoto(file: UIImage, route: FirebaseStorageFolders, completion: @escaping (_ url: URL) -> Void) {
         let randomID = UUID.init().uuidString
         let uploadRef = Storage.storage().reference(withPath: "\(route)/\(randomID).jpg")
 

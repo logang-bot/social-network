@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class MangaListViewController: UIViewController {
     
@@ -13,15 +14,16 @@ class MangaListViewController: UIViewController {
     @IBOutlet weak var mangasTableView: UITableView!
     
     var viewmodel = MangaListViewModel()
-    
+    var mangasCache = [Manga]()
+    var noFoundLabel: NoFoundLabel?
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Mangas"
+        setupSettings()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         initViewModel()
-        mangasTableView.delegate = self
-        mangasTableView.dataSource = self
-        let uiNib = UINib(nibName: "MangaTableViewCell", bundle: nil)
-        mangasTableView.register(uiNib, forCellReuseIdentifier: "MangaCell")
     }
 
     @IBAction func createManga(_ sender: Any) {
@@ -29,9 +31,21 @@ class MangaListViewController: UIViewController {
         show(vc, sender: nil)
     }
     
+    func setupSettings() {
+        mangasSearchBar.delegate = self
+        mangasSearchBar.showsCancelButton = true
+        mangasTableView.delegate = self
+        mangasTableView.dataSource = self
+        let uiNib = UINib(nibName: MangaTableViewCell.nibName, bundle: nil)
+        mangasTableView.register(uiNib, forCellReuseIdentifier: MangaTableViewCell.identifier)
+        noFoundLabel = NoFoundLabel(parent: self)
+    }
+    
     func initViewModel() {
         viewmodel.getMangas()
+        SVProgressHUD.show()
         viewmodel.reloadData = { [weak self] in
+            SVProgressHUD.dismiss()
             self?.mangasTableView.reloadData()
         }
     }
@@ -43,7 +57,7 @@ extension MangaListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = mangasTableView.dequeueReusableCell(withIdentifier: "MangaCell") as? MangaTableViewCell ?? MangaTableViewCell()
+        let cell = mangasTableView.dequeueReusableCell(withIdentifier: MangaTableViewCell.identifier) as? MangaTableViewCell ?? MangaTableViewCell()
         
         let cellData = viewmodel.getCellData(at: indexPath)
         cell.setUpData(manga: cellData)
@@ -55,7 +69,42 @@ extension MangaListViewController: UITableViewDelegate, UITableViewDataSource {
         let detailsScreen = MangaDetailViewController()
         let manga = viewmodel.getCellData(at: indexPath)
         detailsScreen.mangaId = manga.id
-        
         show(detailsScreen, sender: nil)
+    }
+}
+
+extension MangaListViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        mangasSearchBar.text = ""
+        view.endEditing(true)
+        if viewmodel.mangas.count < mangasCache.count {
+            viewmodel.mangas = mangasCache
+        }
+        noFoundLabel?.isHidden = true
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if viewmodel.mangas.count < mangasCache.count {
+            viewmodel.mangas = mangasCache
+        }
+        mangasCache = viewmodel.mangas
+        guard let text = searchBar.text, !text.isEmpty else {
+            viewmodel.getMangas()
+            noFoundLabel?.isHidden = true
+            return
+        }
+        
+        viewmodel.mangas = viewmodel.mangas.filter{manga in
+            return manga.name.lowercased().contains(text.lowercased())
+        }
+        
+        if viewmodel.mangas.count == 0 {
+            noFoundLabel?.isHidden = false
+        } else {
+            noFoundLabel?.isHidden = true
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
     }
 }

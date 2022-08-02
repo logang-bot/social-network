@@ -25,7 +25,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="05i-pO-UV7">
-                    <rect key="frame" x="0.0" y="95" width="414" height="767"/>
+                    <rect key="frame" x="20" y="105" width="374" height="747"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sN-uh-b2t" customClass="FloatingButton" customModule="__social_network_01" customModuleProvider="target">
@@ -45,13 +45,13 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="1sN-uh-b2t" secondAttribute="bottom" constant="16" id="4PF-Hx-H7G"/>
-                <constraint firstItem="05i-pO-UV7" firstAttribute="top" secondItem="C4V-cS-U8r" secondAttribute="bottom" id="K4c-th-BJI"/>
+                <constraint firstItem="05i-pO-UV7" firstAttribute="top" secondItem="C4V-cS-U8r" secondAttribute="bottom" constant="10" id="K4c-th-BJI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1sN-uh-b2t" secondAttribute="trailing" constant="16" id="S3j-FD-udh"/>
-                <constraint firstItem="05i-pO-UV7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="WNX-kQ-whO"/>
+                <constraint firstItem="05i-pO-UV7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="WNX-kQ-whO"/>
                 <constraint firstItem="C4V-cS-U8r" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ct3-hP-xbE"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="05i-pO-UV7" secondAttribute="trailing" id="f5w-09-cMg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="05i-pO-UV7" secondAttribute="trailing" constant="20" id="f5w-09-cMg"/>
                 <constraint firstItem="C4V-cS-U8r" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="gfJ-pf-KzJ"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="05i-pO-UV7" secondAttribute="bottom" id="k33-ev-7nJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="05i-pO-UV7" secondAttribute="bottom" constant="10" id="k33-ev-7nJ"/>
                 <constraint firstItem="C4V-cS-U8r" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="lZO-A8-Pd2"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="97.767857142857139"/>

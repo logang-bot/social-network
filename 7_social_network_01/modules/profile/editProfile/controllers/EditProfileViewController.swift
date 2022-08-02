@@ -66,6 +66,9 @@ class EditProfileViewController: ImagePickerViewController {
             self!.blurredBackgroundView!.isHidden = true
             self?.navigationController?.popViewController(animated: true)
         }
+        viewmodel.showError = { [weak self] error in
+            ErrorAlert.shared.showAlert(title: "Something went wrong", message: "Sorry, something doesn't work as expected, \(error)", target: self!)
+        }
     }
     
         

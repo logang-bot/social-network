@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatsListViewController" customModule="__social_network_01" customModuleProvider="target">
             <connections>
                 <outlet property="chatListTableView" destination="TFd-sx-e1C" id="e57-Pv-4J2"/>
+                <outlet property="chatSearchBar" destination="Wmy-e8-MoX" id="gHu-3g-RfY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

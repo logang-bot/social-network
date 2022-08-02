@@ -8,9 +8,13 @@
 import UIKit
 
 class OptionTableViewCell: UITableViewCell {
+    
+    static let identifier = "OptionCell"
+    static let nibName = "OptionTableViewCell"
 
     @IBOutlet weak var optionLabel: UILabel!
     @IBOutlet weak var optionStatus: UIImageView!
+    
     var firebaseManager = FirebaseManager.shared
     var status = false
     let checkedImage = UIImage(named: "ic_check_box")! as UIImage
@@ -18,14 +22,11 @@ class OptionTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         optionStatus.image = uncheckedImage
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     @discardableResult

@@ -7,15 +7,12 @@
 
 import Foundation
 
-class AuthorsViewModel {
-    var reloadData: (() -> Void)?
+class AuthorsViewModel: LocalViewModel {
     var authors = [User]() {
         didSet{
             reloadData?()
         }
     }
-    
-    var firebaseManager = FirebaseManager.shared
     
     func getAuthors() {
         let currentUser = CoreDataManager.shared.getData().first as! AuthData

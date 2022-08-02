@@ -65,14 +65,14 @@ class CoreDataManager {
         }
     }
     
-    func saveLocalUser(user: User) {
+    func saveLocalUser(idUser: String, photo: String) {
         let context = self.getContext()
         
         guard let entity = NSEntityDescription.entity(forEntityName: "AuthData", in: context) else {return}
         guard let entry = NSManagedObject(entity: entity, insertInto: context) as? AuthData else {return}
         
-        entry.idUser = user.id
-        entry.photo = user.photo
+        entry.idUser = idUser
+        entry.photo = photo
         
         try? context.save()
     }

@@ -50,13 +50,10 @@ class AuthorDetailViewModel: MangasTableViewModel {
     private func updateLocalUser(values: [String: Any]) {
         firebaseManager.getOneDocument(type: User.self, forCollection: .users, id: (currentUser.idUser)!) { [weak self] result in
             switch result {
-            case .success(let data):
+            case .success:
                 self!.firebaseManager.updateFieldsInDocument(documentId: (self!.currentUser.idUser)!, values: values, collection: .users) { result in
                 }
                 self?.getAuthor()
-                CoreDataManager.shared.deleteAll()
-                CoreDataManager.shared.saveLocalUser(user: data)
-                
             case .failure(let error):
                 print("error, \(error.localizedDescription)")
             }

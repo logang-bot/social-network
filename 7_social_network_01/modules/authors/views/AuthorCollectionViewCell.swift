@@ -9,6 +9,8 @@ import UIKit
 
 class AuthorCollectionViewCell: UICollectionViewCell {
     
+    static let identifier = "AuthorCell"
+    static let nibName = "AuthorCollectionViewCell"
     
     @IBOutlet weak var userPhotoImageView: UIImageView!
     

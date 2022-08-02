@@ -23,7 +23,7 @@ class ProfileViewModel: MangasTableViewModel {
             case .success(let user):
                 self.profileData = user
             case .failure(let error):
-                print("can't fetch the profile info \(error)")
+                self.showError?(error)
             }
         }
     }

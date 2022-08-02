@@ -26,8 +26,8 @@ class ProfileViewController: UIViewController {
         photoImageVIew.layer.cornerRadius = 50
         mangasTableView.delegate = self
         mangasTableView.dataSource = self
-        let uiNib = UINib(nibName: "MangaTableViewCell", bundle: nil)
-        mangasTableView.register(uiNib, forCellReuseIdentifier: "MangaCell")
+        let uiNib = UINib(nibName: MangaTableViewCell.nibName, bundle: nil)
+        mangasTableView.register(uiNib, forCellReuseIdentifier: MangaTableViewCell.identifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +46,9 @@ class ProfileViewController: UIViewController {
         viewmodel.reloadData = {[weak self] in
             self?.loadData()
             self?.mangasTableView.reloadData()
+        }
+        viewmodel.showError = { [weak self] error in
+            ErrorAlert.shared.showAlert(title: "Something went wrong", message: "Sorry, something doesn't work as expected, \(error)", target: self!)
         }
     }
     
@@ -68,8 +71,7 @@ class ProfileViewController: UIViewController {
                 case .success(let image):
                     self.photoImageVIew.image = image
                 case .failure(let error):
-                    ErrorAlert.shared.showAlert(title: "Error Loading the image", message: "Sorry, we can't show your profile image right now", target: self)
-                    print("Can't display the image \(error)")
+                    ErrorAlert.shared.showAlert(title: "Error Loading the image", message: "Sorry, we can't show your profile image right now, \(error)", target: self)
                 }
             }
         }
@@ -86,7 +88,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = mangasTableView.dequeueReusableCell(withIdentifier: "MangaCell") as? MangaTableViewCell ?? MangaTableViewCell()
+        let cell = mangasTableView.dequeueReusableCell(withIdentifier: MangaTableViewCell.identifier) as? MangaTableViewCell ?? MangaTableViewCell()
         
         let cellData = viewmodel.getCellData(at: indexPath)
         cell.setUpData(manga: cellData)

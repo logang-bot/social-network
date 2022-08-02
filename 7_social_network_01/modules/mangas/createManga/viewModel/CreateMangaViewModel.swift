@@ -9,8 +9,7 @@ import Foundation
 import FirebaseFirestore
 import UIKit
 
-class CreateMangaViewModel {
-    var reloadData: (() -> Void)?
+class CreateMangaViewModel: LocalViewModel {
     var finishEditing: (() -> Void)?
     var categories = [Category]() {
         didSet {
@@ -18,9 +17,6 @@ class CreateMangaViewModel {
         }
     }
     var manga: Manga?
-    
-    var firebaseManager = FirebaseManager.shared
-    let currentUser = CoreDataManager.shared.getData().first as! AuthData
     
     func getCategories() {
         firebaseManager.getDocuments(type: Category.self, forCollection: .categories) { result in
@@ -37,7 +33,7 @@ class CreateMangaViewModel {
         let mangaID = firebaseManager.getDocID(forCollection: .mangas)
         var newManga = Manga(id: mangaID, idOwner: currentUser.idUser!, name: name, description: description, categories: categories, frontPage: "", ratingAvg: 0, numRatings: 0, comments: [], createdAt: Date(), updatedAt: Date())
         
-        FirebaseStorageManager.shared.uploadPhoto(file: frontPage, route: "covers") { url in
+        FirebaseStorageManager.shared.uploadPhoto(file: frontPage, route: .covers) { url in
             newManga.frontPage = url.absoluteString
             self.firebaseManager.addDocument(document: newManga, collection: .mangas) { [self] result in
                 let userNewManga = [
@@ -59,7 +55,7 @@ class CreateMangaViewModel {
     
     func updateFullManga(values: [String: Any], photo: UIImage) {
         var finalValues = values
-        FirebaseStorageManager.shared.uploadPhoto(file: photo, route: "covers") { url in
+        FirebaseStorageManager.shared.uploadPhoto(file: photo, route: .covers) { url in
             finalValues["frontPage"] = url.absoluteString
             self.updateManga(values: finalValues)
         }

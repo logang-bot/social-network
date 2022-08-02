@@ -11,20 +11,35 @@ import SVProgressHUD
 class AuthorListViewController: UIViewController {
     
     @IBOutlet weak var authorsSearchBar: UISearchBar!
-    
     @IBOutlet weak var authorsCollectionView: UICollectionView!
     
     let viewmodel = AuthorsViewModel()
+    var authorsCache = [User]()
+    var noFoundLabel: NoFoundLabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Authors"
+        authorsSearchBar.delegate = self
+        authorsSearchBar.showsCancelButton = true
         authorsCollectionView.delegate = self
         authorsCollectionView.dataSource = self
         initViewModel()
         
-        let uiNib = UINib(nibName: "AuthorCollectionViewCell", bundle: nil)
-        authorsCollectionView.register(uiNib, forCellWithReuseIdentifier: "AuthorCell")
+        let uiNib = UINib(nibName: AuthorCollectionViewCell.nibName, bundle: nil)
+        authorsCollectionView.register(uiNib, forCellWithReuseIdentifier: AuthorCollectionViewCell.identifier)
+    }
+    
+    func setupSettings() {
+        authorsSearchBar.delegate = self
+        authorsSearchBar.showsCancelButton = true
+        authorsCollectionView.delegate = self
+        authorsCollectionView.dataSource = self
+        initViewModel()
+        
+        let uiNib = UINib(nibName: AuthorCollectionViewCell.nibName, bundle: nil)
+        authorsCollectionView.register(uiNib, forCellWithReuseIdentifier: AuthorCollectionViewCell.identifier)
+        noFoundLabel = NoFoundLabel(parent: self)
     }
     
     func initViewModel() {
@@ -43,7 +58,7 @@ extension AuthorListViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = authorsCollectionView.dequeueReusableCell(withReuseIdentifier: "AuthorCell", for: indexPath as IndexPath) as? AuthorCollectionViewCell ?? AuthorCollectionViewCell()
+        let cell = authorsCollectionView.dequeueReusableCell(withReuseIdentifier: AuthorCollectionViewCell.identifier, for: indexPath as IndexPath) as? AuthorCollectionViewCell ?? AuthorCollectionViewCell()
         
         let cellData = viewmodel.getCellData(at: indexPath)
         cell.setUpData(author: cellData)
@@ -64,5 +79,38 @@ extension AuthorListViewController: UICollectionViewDelegate, UICollectionViewDa
         
         show(detailsScreen, sender: nil)
     }
+}
+
+extension AuthorListViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        authorsSearchBar.text = ""
+        view.endEditing(true)
+        if viewmodel.authors.count < authorsCache.count {
+            viewmodel.authors = authorsCache
+        }
+        noFoundLabel?.isHidden = true
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if viewmodel.authors.count < authorsCache.count {
+            viewmodel.authors = authorsCache
+        }
+        authorsCache = viewmodel.authors
+        guard let text = searchBar.text, !text.isEmpty else {
+            noFoundLabel?.isHidden = true
+            return
+        }
+        viewmodel.authors = viewmodel.authors.filter{author in
+            return author.name.lowercased().contains(text.lowercased())
+        }
+        
+        if viewmodel.authors.count == 0 {
+            noFoundLabel?.isHidden = false
+        } else {
+            noFoundLabel?.isHidden = true
+        }
+    }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
 }

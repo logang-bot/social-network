@@ -8,6 +8,9 @@
 import UIKit
 
 class CommentTableViewCell: UITableViewCell {
+    static let identifier = "CommentCell"
+    static let nibName = "CommentTableViewCell"
+    
     @IBOutlet weak var authorCommentLabel: UILabel!
     @IBOutlet weak var contentCommentLabel: UILabel!
     

@@ -28,8 +28,8 @@ class AuthorDetailViewController: UIViewController {
         photoImageView.layer.cornerRadius = photoImageView.frame.width / 2
         mangasTableView.delegate = self
         mangasTableView.dataSource = self
-        let uiNib = UINib(nibName: "MangaTableViewCell", bundle: nil)
-        mangasTableView.register(uiNib, forCellReuseIdentifier: "MangaCell")
+        let uiNib = UINib(nibName: MangaTableViewCell.nibName, bundle: nil)
+        mangasTableView.register(uiNib, forCellReuseIdentifier: MangaTableViewCell.identifier)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -56,7 +56,7 @@ class AuthorDetailViewController: UIViewController {
         
         guard let authorPhoto = viewmodel?.authorData?.photo else {return}
         
-        if viewmodel?.authorData?.photo != "defaultUserPhoto" {
+        if viewmodel?.authorData?.photo != AppConstants.defaultAvatar {
             ImageManager.shared.loadImage(from: URL(string: authorPhoto)!) { result in
                 switch result {
                 case .success(let image):
@@ -97,7 +97,7 @@ extension AuthorDetailViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = mangasTableView.dequeueReusableCell(withIdentifier: "MangaCell") as? MangaTableViewCell ?? MangaTableViewCell()
+        let cell = mangasTableView.dequeueReusableCell(withIdentifier: MangaTableViewCell.identifier) as? MangaTableViewCell ?? MangaTableViewCell()
         
         let cellData = viewmodel!.getCellData(at: indexPath)
         cell.setUpData(manga: cellData)

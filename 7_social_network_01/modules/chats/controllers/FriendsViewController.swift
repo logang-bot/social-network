@@ -14,7 +14,6 @@ class FriendsViewController: UIViewController {
     private lazy var friendsReqListVC : FriendRequestsListViewController = {
 
         let vc = FriendRequestsListViewController()
-        
         addViewController(asChildViewController: vc)
         return vc
     }()
@@ -22,13 +21,13 @@ class FriendsViewController: UIViewController {
     private lazy var chatsListVC : ChatsListViewController = {
  
         let vc = ChatsListViewController()
-        
         addViewController(asChildViewController: vc)
         return vc
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Friends"
         setupSegmentedControl()
         segmentedOptionChanged()
     }

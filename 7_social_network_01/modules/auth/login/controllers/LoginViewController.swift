@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
             switch result {
             case .success(let user):
                 print("User", user)
-                CoreDataManager.shared.saveLocalUser(user: user)
+                CoreDataManager.shared.saveLocalUser(idUser: user.id, photo: user.photo)
                 SVProgressHUD.dismiss()
                 SceneDelegate.shared?.setupRootControllerIfNeeded(validUser: true)
             case .failure(let error):

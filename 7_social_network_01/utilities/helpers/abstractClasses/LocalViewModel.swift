@@ -12,4 +12,5 @@ class LocalViewModel {
     let currentUser = CoreDataManager.shared.getData().first as! AuthData
 //    var setData: ( () -> Void )?
     var reloadData: ( () -> Void )?
+    var showError: ((_ error: Error) -> Void )?
 }

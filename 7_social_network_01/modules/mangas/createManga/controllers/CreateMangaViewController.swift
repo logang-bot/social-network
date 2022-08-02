@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import RadioGroup
+import SVProgressHUD
 
 class CreateMangaViewController: ImagePickerViewController {
     
@@ -15,11 +15,10 @@ class CreateMangaViewController: ImagePickerViewController {
     @IBOutlet weak var descriptionTextField: UITextView!
     @IBOutlet weak var categoriesTableView: UITableView!
     @IBOutlet weak var resetButton: UIButton!
-    
     @IBOutlet weak var createButton: UIButton!
     
+    var blurredBackgroundView: BlurredBackground?
     var isEdditingPhoto = false
-    var firebaseManager = FirebaseManager.shared
     let viewmodel = CreateMangaViewModel()
     var selectedCats = [String]()
     
@@ -28,21 +27,12 @@ class CreateMangaViewController: ImagePickerViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        categoriesTableView.delegate = self
-        categoriesTableView.dataSource = self
-        initViewModel()
-        setupView()
-        fillData()
-        let uiNib = UINib(nibName: "OptionTableViewCell", bundle: nil)
-        categoriesTableView.register(uiNib, forCellReuseIdentifier: "OptionCell")
+        setupSettings()
     }
-    
     
     @IBAction func selectPhoto(_ sender: Any) {
         showAddImageOptionAlert()
     }
-    
     
     @IBAction func resetPhoto(_ sender: Any) {
         coverImageView.image = UIImage(named: "addImage")
@@ -54,16 +44,44 @@ class CreateMangaViewController: ImagePickerViewController {
         if isNew {
             viewmodel.createManga(name: nameTextField.text!, description: descriptionTextField.text, categories: selectedCats, frontPage: coverImageView.image!)
         } else {
-            let newValues = [
-                "name": nameTextField.text!,
-                "description": descriptionTextField.text!,
-                "categories": selectedCats
-            ] as [String : Any]
-            if isEdditingPhoto {
-                viewmodel.updateFullManga(values: newValues, photo: coverImageView.image!)
-            } else {
-                viewmodel.updateManga(values: newValues)
+            ConfirmAlert(title: "Are you sure you want to upload these changes?", message: "", preferredStyle: .alert).showAlert(target: self) { () in
+                SVProgressHUD.show()
+                self.blurredBackgroundView?.isHidden = false
+                let newValues = [
+                    "name": self.nameTextField.text!,
+                    "description": self.descriptionTextField.text!,
+                    "categories": self.selectedCats
+                ] as [String : Any]
+                if self.isEdditingPhoto {
+                    self.viewmodel.updateFullManga(values: newValues, photo: self.coverImageView.image!)
+                } else {
+                    self.viewmodel.updateManga(values: newValues)
+                }
             }
+        }
+    }
+    
+    func setupSettings() {
+        categoriesTableView.delegate = self
+        categoriesTableView.dataSource = self
+        initViewModel()
+        setupView()
+        fillData()
+        let uiNib = UINib(nibName: OptionTableViewCell.nibName, bundle: nil)
+        categoriesTableView.register(uiNib, forCellReuseIdentifier: OptionTableViewCell.identifier)
+        blurredBackgroundView = BlurredBackground(parent: self)
+        blurredBackgroundView?.isHidden = true
+    }
+    
+    func initViewModel() {
+        viewmodel.getCategories()
+        viewmodel.finishEditing = { [weak self] in
+            SVProgressHUD.dismiss()
+            self!.blurredBackgroundView!.isHidden = true
+            self?.navigationController?.popViewController(animated: true)
+        }
+        viewmodel.reloadData = { [weak self] in
+            self?.categoriesTableView.reloadData()
         }
     }
     
@@ -71,9 +89,7 @@ class CreateMangaViewController: ImagePickerViewController {
         if !isNew {
             createButton.setTitle("Update Manga", for: .normal)
             let trashImage = UIImage(systemName: "trash.fill")?.withRenderingMode(.alwaysOriginal)
-            
             let trashButton = UIBarButtonItem(image: trashImage, style: .plain, target: self, action: #selector(showDeleteDialog))
-            
             navigationItem.rightBarButtonItem = trashButton
         }
     }
@@ -95,27 +111,9 @@ class CreateMangaViewController: ImagePickerViewController {
     }
     
     @objc func showDeleteDialog() {
-        DispatchQueue.main.async {
-            let sheet = UIAlertController(title: "Are you sure you want to delete this manga?", message: nil, preferredStyle: .alert)
-            
-            sheet.addAction(UIAlertAction(title: "Yes", style: .default) {_ in
-                self.viewmodel.deleteManga()
-                self.navigationController?.popViewController(animated: true)
-            })
-            
-            sheet.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-            self.navigationController?.present(sheet, animated: true, completion: nil)
-            
-        }
-    }
-    
-    func initViewModel() {
-        viewmodel.getCategories()
-        viewmodel.finishEditing = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }
-        viewmodel.reloadData = { [weak self] in
-            self?.categoriesTableView.reloadData()
+        ConfirmAlert(title: "Are you sure you want to delete this manga?", message: "This action can not be reversed", preferredStyle: .alert).showAlert(target: self) { () in
+            self.viewmodel.deleteManga()
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -134,7 +132,7 @@ extension CreateMangaViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = categoriesTableView.dequeueReusableCell(withIdentifier: "OptionCell", for: indexPath) as? OptionTableViewCell ?? OptionTableViewCell()
+        let cell = categoriesTableView.dequeueReusableCell(withIdentifier: OptionTableViewCell.identifier, for: indexPath) as? OptionTableViewCell ?? OptionTableViewCell()
         
         let cellData = viewmodel.getCellData(at: indexPath)
         if !isNew {
@@ -156,10 +154,7 @@ extension CreateMangaViewController: UITableViewDelegate, UITableViewDataSource 
         if currentCell.status {
             selectedCats.append(newCat)
         } else {
-            print(newCat)
             selectedCats.removeAll(where: {$0 == newCat})
-            print("removing")
-            print(selectedCats)
         }
     }
 }

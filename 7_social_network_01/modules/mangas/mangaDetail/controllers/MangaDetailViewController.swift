@@ -34,8 +34,8 @@ class MangaDetailViewController: UIViewController {
         rankStackView.isHidden = true
         commentsTableView.delegate = self
         commentsTableView.dataSource = self
-        let uiNib = UINib(nibName: "CommentTableViewCell", bundle: nil)
-        commentsTableView.register(uiNib, forCellReuseIdentifier: "CommentCell")
+        let uiNib = UINib(nibName: CommentTableViewCell.nibName, bundle: nil)
+        commentsTableView.register(uiNib, forCellReuseIdentifier: CommentTableViewCell.identifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,14 +46,7 @@ class MangaDetailViewController: UIViewController {
         editButton.backgroundColor = .blue
         editButton.layer.cornerRadius = 28
         editButton.setImage(UIImage(systemName: "pencil"), for: .normal)
-        
         editButton.setTitle("", for: .normal)
-        
-//        editButton.tintColor = .white
-        editButton.layer.shadowColor = UIColor.black.cgColor
-        editButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-        editButton.layer.shadowOpacity = 0.5
-        editButton.layer.shadowRadius = 3.0
         editButton.isHidden = true
     }
     
@@ -167,13 +160,10 @@ extension MangaDetailViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = commentsTableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as? CommentTableViewCell ?? CommentTableViewCell()
+        let cell = commentsTableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.identifier, for: indexPath) as? CommentTableViewCell ?? CommentTableViewCell()
         
         let cellData = viewmodel?.getCellData(at: indexPath)
-        
-        
         cell.contentCommentLabel.text = cellData?.content
-        
         viewmodel?.getUserName(for: cellData!) { user in
             cell.authorCommentLabel.text = user.name
         }
