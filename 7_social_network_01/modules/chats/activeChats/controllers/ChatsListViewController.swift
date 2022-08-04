@@ -66,8 +66,10 @@ extension ChatsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellData = viewmodel?.getCellData(at: indexPath)
+        let userReceiver = viewmodel?.getUserData(at: indexPath)
         let vcChat = ChatViewController()
         vcChat.chatId = cellData?.id
+        vcChat.userReceiverName = userReceiver?.name
         self.show(vcChat, sender: nil)
     }
 }

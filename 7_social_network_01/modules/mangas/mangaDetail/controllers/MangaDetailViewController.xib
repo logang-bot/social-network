@@ -132,7 +132,7 @@
                                     </constraints>
                                 </tableView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfZ-GS-0pl">
-                                    <rect key="frame" x="342" y="746" width="56" height="56"/>
+                                    <rect key="frame" x="342" y="787" width="56" height="56"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="56" id="UfS-ct-Wci"/>
                                         <constraint firstAttribute="width" constant="56" id="dln-l4-Ak2"/>
@@ -224,9 +224,9 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="jfZ-GS-0pl" secondAttribute="bottom" constant="16" id="16y-kF-Cc6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jfZ-GS-0pl" secondAttribute="trailing" constant="16" id="6yp-Uc-AvM"/>
                 <constraint firstItem="0xb-y2-ZF8" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="EP7-i6-H0E"/>
+                <constraint firstItem="qXM-xS-nLM" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" id="Kdi-6N-Jo8"/>
                 <constraint firstItem="0xb-y2-ZF8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="VWm-0g-J9C"/>
                 <constraint firstItem="0xb-y2-ZF8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cYa-o0-CYp"/>
-                <constraint firstItem="qXM-xS-nLM" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="pOd-47-FKE"/>
                 <constraint firstItem="0xb-y2-ZF8" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="qI2-JH-3QG"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="93.75"/>

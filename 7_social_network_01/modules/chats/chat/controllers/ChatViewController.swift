@@ -12,11 +12,13 @@ class ChatViewController: UIViewController {
     
     @IBOutlet weak var messageTextField: UITextField!
     var chatId: String?
+    var userReceiverName: String?
     
     let viewmodel = ChatViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = userReceiverName
         messagesTableView.delegate = self
         messagesTableView.dataSource = self
         let uiNib = UINib(nibName: MessageTableViewCell.nibName, bundle: nil)
