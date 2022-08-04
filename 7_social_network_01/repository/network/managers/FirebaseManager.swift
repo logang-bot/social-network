@@ -43,6 +43,8 @@ class FirebaseManager {
                     let dataRaw = try? JSONSerialization.data(withJSONObject: data)
                     let item = try? jsonDecoder.decode(type, from: dataRaw!)
                     completion(.success(item!))
+                } else {
+                    completion(.failure(NSError(domain:"", code: 1, userInfo: nil)))
                 }
             }
         }

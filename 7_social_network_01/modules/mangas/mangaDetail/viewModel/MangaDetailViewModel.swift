@@ -13,6 +13,7 @@ class MangaDetailViewModel: LocalViewModel {
     var setData: (()->Void)?
     var reloadComments: (()->Void)?
     var mangaAuthor: String?
+    var onError: (()->Void)?
     var comments = [Comment]() {
         didSet {
             reloadComments?()
@@ -51,6 +52,7 @@ class MangaDetailViewModel: LocalViewModel {
                 }
             case .failure:
                 print("Can't fetch the manga data")
+                self.onError?()
             }
         }
     }
@@ -135,7 +137,7 @@ class MangaDetailViewModel: LocalViewModel {
         }
         
         firebaseManager.updateFieldsInDocument(documentId: self.mangaData!.id, values: mangaNewRating, collection: .mangas) { _ in
-//                self.finishEditing?()
+            self.getManga()
         }
     }
     
@@ -150,7 +152,7 @@ class MangaDetailViewModel: LocalViewModel {
             ] as [String : Any]
             
             firebaseManager.updateFieldsInDocument(documentId: mangaData!.id, values: mangaNewComment, collection: .mangas) { _ in
-//                self.finishEditing?()
+                self.getComments()
             }
         }
     }

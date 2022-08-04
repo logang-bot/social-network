@@ -84,10 +84,10 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Neo-04-QmY">
-                                    <rect key="frame" x="185" y="218.5" width="169" height="28.5"/>
+                                    <rect key="frame" x="185" y="218.5" width="219" height="43"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9s-gG-Rln">
-                                            <rect key="frame" x="0.0" y="0.0" width="123.5" height="28.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="107" height="43"/>
                                             <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="filled" title="Rank this Manga">
@@ -98,9 +98,9 @@
                                                 <action selector="rateManga:" destination="-1" eventType="touchUpInside" id="l7K-PA-Ore"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDs-20-0EG">
-                                            <rect key="frame" x="128.5" y="0.0" width="40.5" height="28.5"/>
-                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDs-20-0EG">
+                                            <rect key="frame" x="112" y="0.0" width="107" height="43"/>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="deviceWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -132,7 +132,7 @@
                                     </constraints>
                                 </tableView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfZ-GS-0pl">
-                                    <rect key="frame" x="342" y="787" width="56" height="56"/>
+                                    <rect key="frame" x="342" y="746" width="56" height="56"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="56" id="UfS-ct-Wci"/>
                                         <constraint firstAttribute="width" constant="56" id="dln-l4-Ak2"/>
@@ -187,6 +187,7 @@
                                 <constraint firstItem="jMS-te-ouQ" firstAttribute="leading" secondItem="oCJ-iz-XPf" secondAttribute="trailing" constant="20" id="I4z-Ym-IzF"/>
                                 <constraint firstItem="FSw-Z5-LXN" firstAttribute="top" secondItem="JeH-QE-tf7" secondAttribute="bottom" constant="10" id="K5M-op-AZB"/>
                                 <constraint firstItem="fxt-3f-qlO" firstAttribute="leading" secondItem="qXM-xS-nLM" secondAttribute="leading" constant="30" id="NAB-NJ-Mfv"/>
+                                <constraint firstAttribute="trailing" secondItem="Neo-04-QmY" secondAttribute="trailing" constant="10" id="NKF-IF-dc0"/>
                                 <constraint firstItem="JeH-QE-tf7" firstAttribute="leading" secondItem="oCJ-iz-XPf" secondAttribute="trailing" constant="20" id="ORK-TD-hZp"/>
                                 <constraint firstAttribute="trailing" secondItem="Scb-bW-WlY" secondAttribute="trailing" constant="30" id="P9J-I0-bp9"/>
                                 <constraint firstItem="aZg-MW-8ag" firstAttribute="top" secondItem="Scb-bW-WlY" secondAttribute="bottom" constant="10" id="UHa-xo-zvN"/>

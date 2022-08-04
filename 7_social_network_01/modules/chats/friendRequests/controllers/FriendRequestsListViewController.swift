@@ -14,11 +14,15 @@ class FriendRequestsListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initViewModel()
+//        initViewModel()
         let uiNib = UINib(nibName: FriendTableViewCell.nibName, bundle: nil)
         requestsTableView.register(uiNib, forCellReuseIdentifier: FriendTableViewCell.identifier)
         requestsTableView.delegate = self
         requestsTableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        initViewModel()
     }
     
     func initViewModel() {

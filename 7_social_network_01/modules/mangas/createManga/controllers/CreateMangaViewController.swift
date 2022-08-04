@@ -52,6 +52,8 @@ class CreateMangaViewController: ImagePickerViewController {
             return
         }
         if isNew {
+            SVProgressHUD.show()
+            self.blurredBackgroundView?.isHidden = false
             viewmodel.createManga(name: nameTextField.text!, description: descriptionTextField.text, categories: selectedCats, frontPage: coverImageView.image!)
         } else {
             ConfirmAlert(title: "Are you sure you want to upload these changes?", message: "", preferredStyle: .alert).showAlert(target: self) { () in

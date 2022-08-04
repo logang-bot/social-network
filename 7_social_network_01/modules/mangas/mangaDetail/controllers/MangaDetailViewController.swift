@@ -60,6 +60,9 @@ class MangaDetailViewController: UIViewController {
         viewmodel?.setData = { [weak self] in
             self?.setupData()
         }
+        viewmodel?.onError = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
     }
     
     func setupData() {
