@@ -1,16 +1,20 @@
 PODS:
+  - IQKeyboardManagerSwift (6.2.1)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
+  - IQKeyboardManagerSwift (= 6.2.1)
   - SVProgressHUD
 
 SPEC REPOS:
   trunk:
+    - IQKeyboardManagerSwift
     - SVProgressHUD
 
 SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: 0f0ae8935360b4003e6ea1ac7c19898f01e2f7c7
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 509e3828aaa39126dc2df5cc3eca5b7fadb589ca
+PODFILE CHECKSUM: d94f1c12b61ed7aba1ab4b2f71c412d823d8dbe3
 
 COCOAPODS: 1.11.3

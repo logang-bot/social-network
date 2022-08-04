@@ -7,6 +7,7 @@ target '7_social_network_01' do
 
   # Pods for 7_social_network_01
   pod 'SVProgressHUD'
+  pod 'IQKeyboardManagerSwift', '6.2.1'
 
   target '7_social_network_01Tests' do
     inherit! :search_paths

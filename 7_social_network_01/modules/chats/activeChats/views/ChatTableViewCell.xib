@@ -27,17 +27,11 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uQI-yq-FdO">
-                                <rect key="frame" x="60" y="7.5" width="260" height="35"/>
+                                <rect key="frame" x="60" y="15" width="260" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOV-y2-ChD">
                                         <rect key="frame" x="0.0" y="0.0" width="260" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pA-JZ-81X">
-                                        <rect key="frame" x="0.0" y="20.5" width="260" height="14.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -55,7 +49,6 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="lastMessageLabel" destination="6pA-JZ-81X" id="Ajz-ys-1w9"/>
                 <outlet property="userNameLabel" destination="KOV-y2-ChD" id="LeB-Ud-q8t"/>
                 <outlet property="userPhoto" destination="Ff2-Qc-P0E" id="Kbb-lq-arV"/>
             </connections>

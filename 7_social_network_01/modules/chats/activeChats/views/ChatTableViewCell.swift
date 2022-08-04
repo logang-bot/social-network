@@ -14,7 +14,6 @@ class ChatTableViewCell: UITableViewCell {
     
     @IBOutlet weak var userPhoto: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var lastMessageLabel: UILabel!
     
     let firebaseManager = FirebaseManager.shared
     let currentUser = CoreDataManager.shared.getData().first as! AuthData

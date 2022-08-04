@@ -15,12 +15,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         Self.shared = self
-        
-        var localUser: AuthData = AuthData()
-        if (CoreDataManager.shared.getData().count != 0) {
-            localUser = CoreDataManager.shared.getData().first as! AuthData
-            setupRootControllerIfNeeded(validUser: true)
-        }
+        let localUser = CoreDataManager.shared.getData()
+        setupRootControllerIfNeeded(validUser: !localUser.isEmpty)
     
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window = self.window

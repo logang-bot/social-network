@@ -21,6 +21,7 @@ class CreateMangaViewController: ImagePickerViewController {
     var isEdditingPhoto = false
     let viewmodel = CreateMangaViewModel()
     var selectedCats = [String]()
+    var currentPhoto: UIImage?
     
     var isNew = true
     var mangaEdit: Manga?
@@ -35,12 +36,21 @@ class CreateMangaViewController: ImagePickerViewController {
     }
     
     @IBAction func resetPhoto(_ sender: Any) {
-        coverImageView.image = UIImage(named: "addImage")
+        if isNew {
+            coverImageView.image = UIImage(named: "addImage")
+        }
+        else {
+            coverImageView.image = currentPhoto
+        }
         resetButton.isHidden = true
         isEdditingPhoto = false
     }
     
     @IBAction func createManga(_ sender: Any) {
+        guard isEdditingPhoto == true else {
+            ErrorAlert.shared.showAlert(title: "Not allowed", message: "Please choose a cover image for your manga", target: self)
+            return
+        }
         if isNew {
             viewmodel.createManga(name: nameTextField.text!, description: descriptionTextField.text, categories: selectedCats, frontPage: coverImageView.image!)
         } else {
@@ -62,6 +72,7 @@ class CreateMangaViewController: ImagePickerViewController {
     }
     
     func setupSettings() {
+        resetButton.isHidden = true
         categoriesTableView.delegate = self
         categoriesTableView.dataSource = self
         initViewModel()
@@ -103,6 +114,7 @@ class CreateMangaViewController: ImagePickerViewController {
                 switch result {
                 case .success(let image):
                     self.coverImageView.image = image
+                    self.currentPhoto = image
                 case .failure:
                     print("cant fetch the image of the manga")
                 }

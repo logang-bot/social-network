@@ -16,6 +16,7 @@ class EditProfileViewController: ImagePickerViewController {
     var isEdditingPhoto = false
     var viewmodel = EditProfileViewModel()
     var blurredBackgroundView: BlurredBackground?
+    var currentPhoto: UIImage?
     
     @IBOutlet weak var userPhotoImageVIew: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -100,13 +101,18 @@ class EditProfileViewController: ImagePickerViewController {
     }
     
     @IBAction func deleteAccount(_ sender: Any) {
-        ConfirmAlert(title: "Delete account confirmation", message: "Are you sure you wanna delete your accoutn permanently?", preferredStyle: .alert).showAlert(target: self) { () in
+        ConfirmAlert(title: "Delete account confirmation", message: "Are you sure you wanna delete your account permanently?", preferredStyle: .alert).showAlert(target: self) { () in
             self.viewmodel.deleteUser()
         }
     }
     
     @IBAction func resetPhoto(_ sender: Any) {
-        userPhotoImageVIew.image = UIImage(named: AppConstants.defaultAvatar)
+        if viewmodel.user?.photo == AppConstants.defaultAvatar {
+            userPhotoImageVIew.image = UIImage(named: AppConstants.defaultAvatar)
+        }
+        else {
+            userPhotoImageVIew.image = currentPhoto
+        }
         resetButton.isHidden = true
         isEdditingPhoto = false
     }
@@ -125,6 +131,7 @@ class EditProfileViewController: ImagePickerViewController {
                 switch result {
                 case .success(let image):
                     self.userPhotoImageVIew.image = image
+                    self.currentPhoto = image
                 case .failure(let error):
                     print("Can't display the image \(error)")
                 }
