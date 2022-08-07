@@ -224,14 +224,14 @@
 		C2B3568F2886638800FB1770 /* MessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
 		C2B356922886639A00FB1770 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		C2D390593BB253C4A394878B /* Pods-7_social_network_01Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-7_social_network_01Tests.debug.xcconfig"; path = "Target Support Files/Pods-7_social_network_01Tests/Pods-7_social_network_01Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		C2F0DE1B289D6642000E7421 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C2F0DE1C289D6642000E7421 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C2FEC5E9286D44A700220A13 /* 7_social_network_01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 7_social_network_01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2FEC5EC286D44A700220A13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2FEC5EE286D44A700220A13 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C2FEC5F0286D44A700220A13 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C2FEC5F3286D44A700220A13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C2FEC5F6286D44A700220A13 /* __social_network_01.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = __social_network_01.xcdatamodel; sourceTree = "<group>"; };
 		C2FEC5F8286D44A700220A13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C2FEC5FB286D44A700220A13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C2FEC5FD286D44A700220A13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2FEC602286D44A800220A13 /* 7_social_network_01Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 7_social_network_01Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2FEC606286D44A800220A13 /* __social_network_01Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = __social_network_01Tests.swift; sourceTree = "<group>"; };
@@ -1005,7 +1005,7 @@
 		C2FEC5E1286D44A700220A13 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
@@ -1312,7 +1312,7 @@
 		C2FEC5F2286D44A700220A13 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C2FEC5F3286D44A700220A13 /* Base */,
+				C2F0DE1B289D6642000E7421 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1320,7 +1320,7 @@
 		C2FEC5FA286D44A700220A13 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C2FEC5FB286D44A700220A13 /* Base */,
+				C2F0DE1C289D6642000E7421 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
