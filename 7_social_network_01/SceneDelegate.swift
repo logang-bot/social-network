@@ -10,13 +10,69 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    static weak var shared: SceneDelegate?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
+        Self.shared = self
+        let localUser = CoreDataManager.shared.getData()
+        setupRootControllerIfNeeded(validUser: !localUser.isEmpty)
+    
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window = self.window
         guard let _ = (scene as? UIWindowScene) else { return }
+    }
+    
+    func setupRootControllerIfNeeded(validUser: Bool) {
+        // TODO: - User real data to check if there is a valid user.
+        //let validUser = false
+        if validUser {
+            // Create VC for TabBar
+            let rootViewController = getRootViewControllerForValidUser()
+            self.window?.rootViewController = rootViewController
+        } else {
+            let rootViewController = getRootViewControllerForInvalidUser()
+            self.window?.rootViewController = rootViewController
+        }
+        self.window?.makeKeyAndVisible()
+    }
+    
+    func getRootViewControllerForInvalidUser() -> UIViewController {
+        let navController = UINavigationController(rootViewController: LoginViewController())
+        return navController
+    }
+    
+    func getRootViewControllerForValidUser() -> UIViewController {
+        // Create TabBarVC
+        let tabBarVC = UITabBarController()
+        tabBarVC.tabBar.isTranslucent = false
+        tabBarVC.tabBar.barTintColor = .black
+//        tabBarVC.view.backgroundColor = .blue
+//        UITabBar.appearance().barTintColor = .black
+        
+        
+        // Add VCs to TabBarVC
+        tabBarVC.viewControllers = [
+            createNavController(for: MangaListViewController(), title: "Mangas", image: UIImage(systemName: "newspaper.fill")!),
+            
+            createNavController(for: AuthorListViewController(), title: "Authors", image: UIImage(systemName: "person.3.sequence.fill")!),
+            
+            createNavController(for: FriendsViewController(), title: "Friends", image: UIImage(systemName: "message.fill")!),
+            
+            createNavController(for: ProfileViewController(), title: "Profile", image: UIImage(systemName: "person.fill")!)
+        ]
+        
+        return tabBarVC
+    }
+    
+    fileprivate func createNavController(for rootViewController: UIViewController,
+                                         title: String,
+                                         image: UIImage) -> UIViewController {
+        let navController = UINavigationController(rootViewController: rootViewController)
+        navController.tabBarItem.title = title
+        navController.tabBarItem.image = image
+        
+        return navController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -47,9 +103,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
 
         // Save changes in the application's managed object context when the application transitions to the background.
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+        CoreDataManager.shared.saveContext()
     }
-
-
 }
 

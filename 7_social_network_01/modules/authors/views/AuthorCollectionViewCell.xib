@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AuthorCell" id="gTV-IL-0wX" customClass="AuthorCollectionViewCell" customModule="__social_network_01" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="220"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="220"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSZ-9d-QNL">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="220"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="VxZ-6a-GJc">
+                                <rect key="frame" x="0.0" y="15" width="150" height="190"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultUserPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="F0c-cu-idT">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="145"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eichiro Oda" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3g-GE-UCB">
+                                        <rect key="frame" x="0.0" y="150" width="150" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NAU-cp-7qG">
+                                        <rect key="frame" x="0.0" y="175.5" width="150" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="VxZ-6a-GJc" secondAttribute="trailing" id="3wJ-F7-MnH"/>
+                            <constraint firstAttribute="bottom" secondItem="VxZ-6a-GJc" secondAttribute="bottom" constant="15" id="N1Z-tp-p2G"/>
+                            <constraint firstItem="VxZ-6a-GJc" firstAttribute="leading" secondItem="pSZ-9d-QNL" secondAttribute="leading" id="YIA-Pt-nlh"/>
+                            <constraint firstItem="VxZ-6a-GJc" firstAttribute="top" secondItem="pSZ-9d-QNL" secondAttribute="top" constant="15" id="qJh-Ub-aKq"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="pSZ-9d-QNL" secondAttribute="bottom" id="6G4-CR-yX1"/>
+                <constraint firstItem="pSZ-9d-QNL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="AtO-ur-YRs"/>
+                <constraint firstItem="pSZ-9d-QNL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="M2M-j8-UDt"/>
+                <constraint firstAttribute="trailing" secondItem="pSZ-9d-QNL" secondAttribute="trailing" id="OZB-b7-SG9"/>
+            </constraints>
+            <connections>
+                <outlet property="auhorNameLabel" destination="a3g-GE-UCB" id="AC8-pl-2iD"/>
+                <outlet property="followersLabel" destination="NAU-cp-7qG" id="avg-2c-MQK"/>
+                <outlet property="userPhotoImageView" destination="F0c-cu-idT" id="3AW-bQ-PCd"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="90.401785714285708"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="defaultUserPhoto" width="300" height="300"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
